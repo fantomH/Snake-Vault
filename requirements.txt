@@ -1,0 +1,14 @@
+## ----------------------------------------------------------------------- INFO
+## [requirements.txt]
+## author        : fantomH
+## created       : 2023-08-22 11:11:22 UTC
+## updated       : 2023-09-24 13:09:15 UTC
+## description   : Packages.
+
+## ( markdownify )
+## Convert some HTML to Markdown.
+## url: https://github.com/matthewwithanm/python-markdownify
+markdownify
+
+# vim: foldmethod=marker
+## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯
