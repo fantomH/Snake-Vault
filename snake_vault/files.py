@@ -7,6 +7,7 @@
 
 import os
 import hashlib
+import csv
 
 def file_info(f):
     '''
@@ -22,28 +23,58 @@ def file_info(f):
 
     if os.path.isfile(f):
 
-        FILE_INFO = {}
-        FILE_INFO['path'] = os.path.abspath(f)
-        FILE_INFO['filename'] = os.path.basename(f)
-        FILE_INFO['size'] = os.path.getsize(f)
+        try:
+            FILE_INFO = {}
+            FILE_INFO['path'] = os.path.abspath(f)
+            FILE_INFO['filename'] = os.path.basename(f)
+            FILE_INFO['size'] = os.path.getsize(f)
 
-        md5 = hashlib.md5()
-        with open(FILE_INFO.get('path'), 'rb') as _INPUT:
-            for line in _INPUT:
-                md5.update(line)
-            FILE_INFO['md5sum'] = md5.hexdigest()
+            md5 = hashlib.md5()
+            with open(FILE_INFO.get('path'), 'rb') as _INPUT:
+                for line in _INPUT:
+                    md5.update(line)
+                FILE_INFO['md5sum'] = md5.hexdigest()
 
-        return FILE_INFO
+            return FILE_INFO
+        except:
+            FILE_INFO = {}
+            FILE_INFO['path'] = "PASS"
+            FILE_INFO['filename'] = "PASS"
+            FILE_INFO['size'] = "PASS"
+            FILE_INFO['md5sum'] = "PASS"
+
+            return FILE_INFO
     return False
 
 list_of_directories = [
-                       '/home/ghost/main',
-                       '/home/ghost/Downloads'
+                       '/home/ghost/radimed.old',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/.im',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/.radiemd.bkp',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/.radiemd',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/20210706/.mdb2.bkup',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/20210706/CHG0088900',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/backupDropbox/im',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/backupDropbox/IMtmp',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/Dropbox/im_radimed',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/g.data/im',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/g.data/im_archives',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/_im',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/IM',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/radimed',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/radimed.bkp',
+                       '/run/media/ghost/Extreme SSD/.dump_to_sort/Zzz/WSMI',
                       ]
-for directory in list_of_directories:
-    for root, dirs, files in os.walk(directory):
-        if dirs != ".git":
-            print(file_info(os.path.join(root, file)))
+_newline = "\n"
+with open('/home/ghost/tmp/filesmd5.csv', mode="w") as _output:
+    fieldnames = ['filename', 'path', 'size', 'md5sum']
+    writer = csv.DictWriter(_output, fieldnames=fieldnames)
+
+    for directory in list_of_directories:
+        for root, dirs, files in os.walk(directory):
+            if "/.git/" not in root:
+                for file in files:
+                    _info = file_info(os.path.join(root.encode('UTF-8', 'surrogateescape'), file.encode('UTF-8', 'surrogateescape')))
+                    writer.writerow(_info)
 
 # vim: foldmethod=marker
 ## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯
