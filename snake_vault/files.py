@@ -46,24 +46,7 @@ def file_info(f):
             return FILE_INFO
     return False
 
-list_of_directories = [
-                       '/home/ghost/radimed.old',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/.im',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/.radiemd.bkp',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/.radiemd',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/20210706/.mdb2.bkup',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/20210706/CHG0088900',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/backupDropbox/im',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/backupDropbox/IMtmp',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/Dropbox/im_radimed',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/g.data/im',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/g.data/im_archives',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/_im',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/IM',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/radimed',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/radimed.bkp',
-                       '/run/media/ghost/Extreme SSD/.dump_to_sort/Zzz/WSMI',
-                      ]
+list_of_directories = [ '/home/ghost/main/radimed/' ]
 _newline = "\n"
 with open('/home/ghost/tmp/filesmd5.csv', mode="w") as _output:
     fieldnames = ['filename', 'path', 'size', 'md5sum']
