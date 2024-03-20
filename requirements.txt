@@ -2,13 +2,21 @@
 ## [requirements.txt]
 ## author        : fantomH
 ## created       : 2023-08-22 11:11:22 UTC
-## updated       : 2023-09-24 13:09:15 UTC
+## updated       : 2024-03-20 01:27:56 UTC
 ## description   : Packages.
 
 ## ( markdownify )
 ## Convert some HTML to Markdown.
 ## url: https://github.com/matthewwithanm/python-markdownify
 markdownify
+
+## ( python-magic )
+## python-magic is a Python interface to the libmagic file type identification
+## library. libmagic identifies file types by checking their headers according
+## to a predefined list of file types. This functionality is exposed to the
+## command line by the Unix command file.
+## url: https://github.com/ahupp/python-magic
+python-magic
 
 # vim: foldmethod=marker
 ## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯
