@@ -11,7 +11,10 @@ import shlex
 import shutil
 import subprocess
 
-def execute(cmd, cwd=None, shell=False, capture_output=False, text=True, input=None):
+def execute(cmd, cwd=None, shell=False, capture_output=False, stdout=subprocess.PIPE, text=True, input=None):
+    # :version       : 2024-03-30 02:50:48 UTC
+    # :description   : A custom function to run subprocess
+
     """Simplyfied subprocess.run.
 
     Arguments:
@@ -21,16 +24,18 @@ def execute(cmd, cwd=None, shell=False, capture_output=False, text=True, input=N
                 hello = "Hello world"
                 execute(f"echo {hello}")
              If the command includes pipes, or other shell characters, set the 
-             argument `shell` to True.
-             Example:
-                execute(f"find / -iname *password* 2>/dev/null | grep '/usr/share'", shell=True)
+             argument `shell` to True. See shell.
         cwd: (str) Current working directory.
              If you need to run the command in a particular directory.
         shell: (bool) Run command as in the terminal. Default: False
              By default the `cmd` is split as a list, using shlex.
              Set `shell` to True if you have any shell reserved characters,
              such as pipes or redirections.
+             Example:
+                execute(f"find / -iname *password* 2>/dev/null | grep '/usr/share'", shell=True)
         capture_output: (bool) Capture the command stdout and stderr. Default: False.
+                        Use this only to parse the stdout and stderr.
+                        Terminal interaction will be impossible.
         text:
         input: (str) Takes a string the command need to injest.
     """
@@ -42,7 +47,7 @@ def execute(cmd, cwd=None, shell=False, capture_output=False, text=True, input=N
     if input:
         input = input.encode()
         
-    cmd_run = subprocess.run(cmd_list, cwd=cwd, shell=shell, capture_output=capture_output, input=input)
+    cmd_run = subprocess.run(cmd_list, cwd=cwd, shell=shell, capture_output=capture_output, stdout=stdout, input=input)
 
     CommandResults = namedtuple('CommandResults', ['returncode',
                                                    'stdout',
@@ -51,8 +56,8 @@ def execute(cmd, cwd=None, shell=False, capture_output=False, text=True, input=N
                                                    'cwd',
                                                    'input'])
 
-    cmd = CommandResults(cmd_run.returncode, cmd_run.stdout, cmd_run.stderr, cmd_run.args, cwd, input)
-    return cmd
+    result = CommandResults(cmd_run.returncode, cmd_run.stdout, cmd_run.stderr, cmd_run.args, cwd, input)
+    return result
 
 def which(exec_list: list) -> bool:
 
@@ -64,7 +69,9 @@ def which(exec_list: list) -> bool:
 
 if __name__ == "__main__":
 
-    print(which(["bat", "bash", "hello"]))
+    print(execute('cat -', input='hello', text=False, cwd='/home/ghost/', capture_output=False).stdout)
+
+    # print(which(["bat", "bash", "hello"]))
 
     # print(execute.__doc__)
     # xec = execute(f"paru -S --noconfirm nightpdf-git")
