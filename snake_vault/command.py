@@ -46,6 +46,9 @@ def execute(cmd, cwd=None, shell=False, capture_output=False, stdout=subprocess.
         cmd_list = shlex.split(cmd)
     if input:
         input = input.encode()
+
+    if capture_output:
+        stdout=None
         
     cmd_run = subprocess.run(cmd_list, cwd=cwd, shell=shell, capture_output=capture_output, stdout=stdout, input=input)
 
@@ -69,8 +72,9 @@ def which(exec_list: list) -> bool:
 
 if __name__ == "__main__":
 
-    print(execute('cat -', input='hello', text=False, cwd='/home/ghost/', capture_output=False).stdout)
+    print(execute('sudo pacman -Syu', capture_output=False))
 
+    subprocess.run('sudo pacman -Syu', shell=True, capture_output=True)
     # print(which(["bat", "bash", "hello"]))
 
     # print(execute.__doc__)
