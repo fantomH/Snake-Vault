@@ -1,11 +1,21 @@
-## ----------------------------------------------------------------------- INFO
-## [messages.py]
-## author        : fantomH
-## created       : 2023-09-21 00:54:07 UTC
-## updated       : 2023-09-21 00:54:07 UTC
-## description   : Display messages.
+# :----------------------------------------------------------------------- INFO
+# :[Snake-Vault/snake_vault/messages.py]
+# :author        : fantomH
+# :created       : 2023-09-21 00:54:07 UTC
+# :updated       : 2024-04-09 17:00:40 UTC
+# :description   : Display messages.
 
 class Colors:
+
+    """Colors - Colors class
+
+    # :module : Snake-Vault/snake_vault/messages.py
+    # :version: 2024-04-09 17:03:43 UTC
+
+    Examples:
+        blue = Colors.BLUE
+    """
+
     BLUE = '\033[34m'
     BOLD = '\033[1m'
     GREEN = '\033[32m'
@@ -14,6 +24,28 @@ class Colors:
     YELLOW = '\033[33m'
 
 def message(category, msg):
+
+    """message() - Formated messages.
+
+    # :module : Snake-Vault/snake_vault/messages.py
+    # :version: 2024-04-09 17:06:34 UTC
+
+    Arguments:
+        category: (str) Type of message available.
+             - action:
+               [*] Setting preset for random number.
+             - result:
+               [-] 33Gb found.
+             - question:
+               [?] What would you like?
+             - alert:
+               [!] You might want to install optional dependancies.
+             - warning/error:
+               [!] Unable to fetch file.
+             - title:
+               HOSTNAME          IP                PATH
+               `title` will not align columns. You will have to do it manually.
+    """
 
     if category == 'action':
         print(f"{Colors.GREEN}[*]{Colors.RESET} {Colors.BOLD}{msg}{Colors.RESET}")
@@ -29,5 +61,4 @@ def message(category, msg):
     elif category == 'title':
         print(f"{Colors.BOLD}{msg}{Colors.RESET}")
 
-# vim: foldmethod=marker
-## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯
+# :------------------------------------------------------------- FIN ¯\_(ツ)_/¯

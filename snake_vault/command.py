@@ -1,21 +1,22 @@
 #! /usr/bin/env python
-## ----------------------------------------------------------------------- INFO
-## [command.py]
-## author        : fantomH @alterEGO Linux
-## created       : 2023-12-08 11:52:32 UTC
-## updated       : 2023-12-20 14:30:28 UTC
-## description   : Commands utils
+# :----------------------------------------------------------------------- INFO
+# :[Snake-Vault/snake_vault/command.py]
+# :author        : fantomH @alterEGO Linux
+# :created       : 2023-12-08 11:52:32 UTC
+# :updated       : 2024-04-07 13:55:20 UTC
+# :description   : Commands utils
 
 from collections import namedtuple
 import shlex
 import shutil
 import subprocess
 
-def execute(cmd, cwd=None, shell=False, capture_output=False, stdout=subprocess.PIPE, text=True, input=None):
-    # :version       : 2024-03-30 02:50:48 UTC
-    # :description   : A custom function to run subprocess
+def execute(cmd, cwd=None, shell=False, text=True, input=None, interact=False):
 
-    """Simplyfied subprocess.run.
+    """execute() - A custom function to run subprocess
+
+    # :module : Snake-Vault/snake_vault/command.py
+    # :version: 2024-04-07 13:56:33 UTC
 
     Arguments:
         cmd: (str) Command to be executed.
@@ -23,34 +24,43 @@ def execute(cmd, cwd=None, shell=False, capture_output=False, stdout=subprocess.
              Example:
                 hello = "Hello world"
                 execute(f"echo {hello}")
+             By default, the string will be split into a list, using shlex.split
+             to satisfy subprocess function.
              If the command includes pipes, or other shell characters, set the 
              argument `shell` to True. See shell.
-        cwd: (str) Current working directory.
+        cwd: (str, default: None) Current working directory.
              If you need to run the command in a particular directory.
-        shell: (bool) Run command as in the terminal. Default: False
-             By default the `cmd` is split as a list, using shlex.
+        shell: (bool, default: False) Run command as in the terminal.
              Set `shell` to True if you have any shell reserved characters,
              such as pipes or redirections.
              Example:
                 execute(f"find / -iname *password* 2>/dev/null | grep '/usr/share'", shell=True)
-        capture_output: (bool) Capture the command stdout and stderr. Default: False.
-                        Use this only to parse the stdout and stderr.
-                        Terminal interaction will be impossible.
-        text:
-        input: (str) Takes a string the command need to injest.
+        text: (bool, default: True) stdout, stderr as string, not bytes.
+        input: (str, default: None) Takes a string the command need to injest.
+             Input will be encoded to satisfy subprocess.
+        interact: (bool, default: False) In order to interact with a subprocess,
+             capture_output must be disabled. Thus, you cannot capture the 
+             stdout and stderr, and run the subprocess with manual intervention
+             at the same time.
     """
 
+    # :Shell
     if shell == True:
         cmd_list = cmd
     else:
         cmd_list = shlex.split(cmd)
+
+    # :Standard input.
     if input:
         input = input.encode()
 
-    if capture_output:
-        stdout=None
+    # :Interact
+    if interact:
+        capture_output = False
+    else:
+        capture_output = True
         
-    cmd_run = subprocess.run(cmd_list, cwd=cwd, shell=shell, capture_output=capture_output, stdout=stdout, input=input)
+    cmd_run = subprocess.run(cmd_list, cwd=cwd, shell=shell, input=input, capture_output=capture_output)
 
     CommandResults = namedtuple('CommandResults', ['returncode',
                                                    'stdout',
@@ -64,6 +74,18 @@ def execute(cmd, cwd=None, shell=False, capture_output=False, stdout=subprocess.
 
 def which(exec_list: list) -> bool:
 
+    """which() - Verify a list of executable if exist on the system.
+
+    # :module : Snake-Vault/snake_vault/command.py
+    # :version: 2024-04-07 14:23:18 UTC
+
+    Arguments:
+        exect_list: (list) Executable list.
+    """
+
+    if not isinstance(exec_list, list):
+        return 'You must provide a list of executable.'
+
     for e in exec_list:
         if shutil.which(e) is None:
             return False
@@ -72,21 +94,9 @@ def which(exec_list: list) -> bool:
 
 if __name__ == "__main__":
 
-    print(execute('sudo pacman -Syu', capture_output=False))
+    pass
+    #xec = execute(f"paru -S --noconfirm nightpdf-git")
+    # execute('sudo pacman -Syu', shell=True, interact=True)
+    # print(which(['hello']))
 
-    subprocess.run('sudo pacman -Syu', shell=True, capture_output=True)
-    # print(which(["bat", "bash", "hello"]))
-
-    # print(execute.__doc__)
-    # xec = execute(f"paru -S --noconfirm nightpdf-git")
-
-    # print(xec.stdout)
-
-# _input = "hello world"
-# results = execute(f"paru -Qlq paru", capture_output=True, cwd="/tmp", input=_input)
-
-# print(results.cwd, results.input, results.args)
-
-
-# vim: foldmethod=marker
-## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯
+# :------------------------------------------------------------- FIN ¯\_(ツ)_/¯
