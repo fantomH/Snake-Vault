@@ -1,8 +1,8 @@
 # :----------------------------------------------------------------------- INFO
-# [Snake-Vault/snake_vault/messages.py]
+# [Snake-Vault/snake_vault/flask/app/utils/messages.py]
 # /author        : fantomH
-# /created       : 2023-09-21 00:54:07 UTC
-# /updated       : 2024-04-17 12:13:36 UTC
+# /created       : 2024-04-17 12:25:17 UTC
+# /updated       : 2024-04-17 12:25:22 UTC
 # /description   : Display messages.
 
 class Colors:
