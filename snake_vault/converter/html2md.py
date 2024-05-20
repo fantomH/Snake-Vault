@@ -31,7 +31,3 @@ with open('/home/ghost/tmp/marktext', mode='r') as _input:
     # md = md.replace('\n\n\n', '')
 
     print(md)
-
-
-# vim: foldmethod=marker
-## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯

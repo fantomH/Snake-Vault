@@ -1,10 +1,9 @@
-#! /usr/bin/env python
 # :----------------------------------------------------------------------- INFO
 # :[Snake-Vault/snake_vault/command.py]
-# :author        : fantomH @alterEGO Linux
-# :created       : 2023-12-08 11:52:32 UTC
-# :updated       : 2024-04-07 13:55:20 UTC
-# :description   : Commands utils
+# /author        : fantomH
+# /created       : 2023-12-08 11:52:32 UTC
+# /updated       : 2024-05-20 21:27:36 UTC
+# /description   : Commands utils
 
 from collections import namedtuple
 import shlex
@@ -13,10 +12,9 @@ import subprocess
 
 def execute(cmd, cwd=None, shell=False, text=True, input=None, interact=False):
 
-    """execute() - A custom function to run subprocess
+    """(function) execute()
 
-    # :module : Snake-Vault/snake_vault/command.py
-    # :version: 2024-04-07 13:56:33 UTC
+    A custom function to run subprocess
 
     Arguments:
         cmd: (str) Command to be executed.
@@ -74,10 +72,9 @@ def execute(cmd, cwd=None, shell=False, text=True, input=None, interact=False):
 
 def which(exec_list: list) -> bool:
 
-    """which() - Verify a list of executable if exist on the system.
+    """(function) which()
 
-    # :module : Snake-Vault/snake_vault/command.py
-    # :version: 2024-04-07 14:23:18 UTC
+    Verify a list of executable if exist on the system.
 
     Arguments:
         exect_list: (list) Executable list.
@@ -91,12 +88,3 @@ def which(exec_list: list) -> bool:
             return False
 
     return True
-
-if __name__ == "__main__":
-
-    pass
-    #xec = execute(f"paru -S --noconfirm nightpdf-git")
-    # execute('sudo pacman -Syu', shell=True, interact=True)
-    # print(which(['hello']))
-
-# :------------------------------------------------------------- FIN ¯\_(ツ)_/¯

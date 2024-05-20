@@ -7,10 +7,7 @@
 
 class Colors:
 
-    """Colors - Colors class
-
-    # /module : Snake-Vault/snake_vault/messages.py
-    # /version: 2024-04-17 12:13:55 UTC
+    """(class) Colors
 
     Examples:
         blue = Colors.BLUE
@@ -25,10 +22,8 @@ class Colors:
 
 def message(category, msg):
 
-    """message() - Formated messages.
-
-    # /module : Snake-Vault/snake_vault/messages.py
-    # /version: 2024-04-17 12:14:16 UTC
+    """(function) message()
+    Formated messages.
 
     Arguments:
         category: (str) Type of message available.
@@ -60,5 +55,3 @@ def message(category, msg):
         print(f"{Colors.RED}[!]{Colors.RESET} {Colors.BOLD}{msg}{Colors.RESET}")
     elif category == 'title':
         print(f"{Colors.BOLD}{msg}{Colors.RESET}")
-
-# :------------------------------------------------------------- FIN ¯\_(ツ)_/¯

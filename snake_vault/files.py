@@ -1,9 +1,9 @@
-## ----------------------------------------------------------------------- INFO
-## [snake_vault/files.py]
-## author        : fantomH
-## created       : 2024-02-23 20:11:19 UTC
-## updated       : 2024-03-20 10:32:55 UTC
-## description   : Files utilities.
+# :----------------------------------------------------------------------- INFO
+# :[snake_vault/files.py]
+# /author        : fantomH
+# /created       : 2024-02-23 20:11:19 UTC
+# /updated       : 2024-05-20 21:32:27 UTC
+# /description   : Files utilities.
 
 import csv
 import hashlib
@@ -53,9 +53,3 @@ def _test_file_info():
     for root, dirs, files in os.walk(PATH):
         for file in files:
             print(file_info(os.path.join(root, file), mime=True))
-
-if __name__ == "__main__":
-    _test_file_info()
-
-# vim: foldmethod=marker
-## ------------------------------------------------------------- FIN ¯\_(ツ)_/¯
