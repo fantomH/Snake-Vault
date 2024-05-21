@@ -1,0 +1,4 @@
+Metadata-Version: 2.1
+Name: Snake-Vault
+Version: 1.0.0
+Requires-Dist: python-magic
