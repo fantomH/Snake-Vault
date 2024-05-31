@@ -18,4 +18,5 @@ snake_vault/flask/app/paginate.py
 snake_vault/flask/app/utils.py
 snake_vault/flask/app/routes/__init__.py
 snake_vault/flask_utils/__init__.py
+snake_vault/flask_utils/auth.py
 snake_vault/flask_utils/paginate.py
