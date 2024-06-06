@@ -6,9 +6,12 @@ Snake_Vault.egg-info/requires.txt
 Snake_Vault.egg-info/top_level.txt
 snake_vault/__init__.py
 snake_vault/command.py
+snake_vault/enigma.py
 snake_vault/files.py
+snake_vault/manipulator.py
 snake_vault/menu.py
 snake_vault/messages.py
+snake_vault/timekeeper.py
 snake_vault/converter/__init__.py
 snake_vault/converter/html2md.py
 snake_vault/flask/__init__.py
