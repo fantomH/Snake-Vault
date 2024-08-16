@@ -1,13 +1,14 @@
 # :----------------------------------------------------------------------- INFO
-# :[snake_vault/files.py]
-# /author        : fantomH
-# /created       : 2024-02-23 20:11:19 UTC
-# /updated       : 2024-05-20 21:32:27 UTC
-# /description   : Files utilities.
+# :[Snake-Vault/snake_vault/files.py]
+# :author        : fantomH
+# :created       : 2024-02-23 20:11:19 UTC
+# :updated       : 2024-08-16 19:48:03 UTC
+# :description   : Files utilities.
 
 import csv
 import hashlib
 import os
+
 import magic
 
 def file_info(f, filename=True,
@@ -47,9 +48,8 @@ def file_info(f, filename=True,
 
     return FILE_INFO
 
-def _test_file_info():
+def directory_files_info(dirpath):
 
-    PATH = '/usr/local/bin'
-    for root, dirs, files in os.walk(PATH):
+    for root, dirs, files in os.walk(dirpath):
         for file in files:
             print(file_info(os.path.join(root, file), mime=True))

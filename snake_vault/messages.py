@@ -1,9 +1,9 @@
 # :----------------------------------------------------------------------- INFO
-# [Snake-Vault/snake_vault/messages.py]
-# /author        : fantomH
-# /created       : 2023-09-21 00:54:07 UTC
-# /updated       : 2024-04-17 12:13:36 UTC
-# /description   : Display messages.
+# :[Snake-Vault/snake_vault/messages.py]
+# :author        : fantomH
+# :created       : 2023-09-21 00:54:07 UTC
+# :updated       : 2024-08-16 19:52:34 UTC
+# :description   : Display messages.
 
 class Colors:
 
@@ -23,7 +23,7 @@ class Colors:
 def message(category, msg):
 
     """(function) message()
-    Formated messages.
+    Formated terminal messages.
 
     Arguments:
         category: (str) Type of message available.
