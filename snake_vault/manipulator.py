@@ -1,9 +1,9 @@
 # :----------------------------------------------------------------------- INFO
 # :[snake_vault/manipulator.py]
-# /author        : fantomH
-# /created       : 2024-05-30 11:32:04 UTC
-# /updated       : 2024-05-30 11:32:04 UTC
-# /description   : Data manipulation utils
+# :author        : fantomH
+# :created       : 2024-05-30 11:32:04 UTC
+# :updated       : 2024-08-16 19:11:02 UTC
+# :description   : Data manipulation utils
 
 import re
 
@@ -11,7 +11,7 @@ import re
 def sanitize_input(data, accepted_characters=" a-zA-Z0-9_\-", replace_characters=None):
     """
     sanitize_input() takes a list, a tuple or a string, and:
-        - will replace characters is replace_characters is not None;
+        - will replace characters if replace_characters is not None;
         - will remove any characters not in accepted_characters.
 
     Arguments:
