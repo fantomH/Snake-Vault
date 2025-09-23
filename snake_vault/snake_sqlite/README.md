@@ -27,6 +27,20 @@ Provides the command `snake-sqlite`, which is the equivalent of `python -m snake
 
 `snake-sqlite --db <db_name> --table <table_name> --headers`
 
+### Export to CSV:
+
+```
+snake-sqlite --db <db_name> --table <table_name> --export-as-csv -
+```
+
+Displays the full table in stdout as csv.
+
+```
+snake-sqlite --db <db_name> --table <table_name> --export-as-csv /path/to/filename.csv
+```
+
+Exports all data of the table to a csv file.
+
 ### Import XML data:
 
 `snake-sqlite --db <db_name> --table <table_name> --import-xml <xml_file>`
