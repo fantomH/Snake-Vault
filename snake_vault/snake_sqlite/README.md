@@ -18,3 +18,17 @@ Provides the command `snake-sqlite`, which is the equivalent of `python -m snake
 ### SQLite db information:
 
 `snake-sqlite --db <db_name> --info`
+
+### SQLite db tables:
+
+`snake-sqlite --db <db_name> --tables`
+
+### SQLite table's headers:
+
+`snake-sqlite --db <db_name> --table <table_name> --headers`
+
+### Import XML data:
+
+`snake-sqlite --db <db_name> --table <table_name> --import-xml <xml_file>`
+
+see `python -m pydoc snake_vault.snake_sqlite.xml2sqlite.import_xml` for optional options.
