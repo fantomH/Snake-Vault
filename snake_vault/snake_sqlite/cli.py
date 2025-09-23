@@ -11,6 +11,7 @@ from . import ( export_as_csv,
                 export_query_to_db,
                 export_table_to_db,
                 get_headers,
+                import_xml,
                 list_tables, 
                 print_info,
                 print_table,
@@ -46,8 +47,47 @@ def main():
              "Default: source table name, or SQL filename stem."
     )
 
+    # :: ( IMPORT )
+    # :: XML
+    parser.add_argument(
+        "--import-xml",
+        metavar="XMLFILE",
+        help="Import XML data to an SQLite table.",
+    )
+    parser.add_argument(
+        "--element",
+        type=str,
+        default=None,
+        help="Element in which data is found. Will attempt to detect it if argument is omitted."
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1000,
+        help="Batch insert size (default: 1000)"
+    )
+    parser.add_argument(
+        "--drop-existing", action="store_true",
+        help="If set, drop the destination table/view before importing."
+    )
 
     args = parser.parse_args()
+
+    # :: --import-xml
+    if args.import_xml:
+        if not (args.db and args.table):
+            parser.error("[!] --db and --table are required when using --import-xml")
+
+        print(f"[-] Processing : {args.import_xml}")
+        import_xml(
+            xml_path=args.import_xml,
+            db_path=args.db,
+            table=args.table,
+            element_local=args.element,
+            batch_size=args.batch_size,
+            drop_existing=args.drop_existing,
+        )
+        return
 
     # :: Tree-like view
     if args.info:
@@ -67,7 +107,7 @@ def main():
             for header in _headers:
                 print(header)
 
-        # :: --table <table_name> --export-as-csv <optional_output_path>
+        # :: --export-as-csv
         if args.export_as_csv is not None and not args.from_sql_file:
 
             # :: Fetch all rows + headers for the table.
@@ -77,9 +117,14 @@ def main():
             headers = [d[0] for d in cur.description] if cur.description else []
             conn.close()
 
-            dest = None if args.export_as_csv is True else args.export_as_csv
-            out = export_as_csv(headers, rows, dest, default_name=args.table)
-            print(f"Exported {args.table} → {out}")
+            dest_path = None if args.export_as_csv is True else args.export_as_csv
+            out = export_as_csv(
+                headers=headers,
+                rows=rows,
+                dest_path=dest_path, 
+                csv_name=args.table
+            )
+            print(f"[-] Exported {args.table} -> {out}")
 
         # :: --export-to-db
         if args.export_to_db:
@@ -100,9 +145,13 @@ def main():
                 parser.error("--out-table is required when using --from-sql-file with --export-to-db")
         # :: --export-as-csv
         elif args.export_as_csv is not None:
-            dest = None if args.export_as_csv is True else args.export_as_csv
-            out = export_as_csv(headers, rows, dest, default_name="query_result")
-            print(f"Exported query result → {out}")
+            dest_path = None if args.export_as_csv is True else args.export_as_csv
+            out = export_as_csv(
+                headers=headers,
+                rows=rows,
+                dest_path=dest_path
+            )
+            print(f"Exported query result -> {out}")
         else:
-            # :: Default print a the results as a table to the stdout.
-            print_table(headers, rows)
+            # :: Default print a the results as a table to stdout.
+            print_table(headers=headers, rows=rows, pretty=False)

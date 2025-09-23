@@ -1,4 +1,5 @@
 # Snake-Vault
+
 Miscellanous Python utilities.
 
 ## Package content
@@ -52,6 +53,12 @@ Arguments:
             HOSTNAME          IP                PATH
             `title` will not align columns. You will have to do it manually.
 ```
+
+### snake_vault.snake_sqlite
+
+SQLite helper.
+
+Provides the command `snake-sqlite`.
 
 ### snake_vault.timekeeper
 

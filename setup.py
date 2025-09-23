@@ -1,9 +1,9 @@
-# :----------------------------------------------------------------------- INFO
-# :[Snake-Vault/setup.py]
-# :author        : fantomH
-# :created       : 2024-05-19 13:50:18 UTC
-# :updated       : 2024-08-16 18:34:42 UTC
-# :description   : "Setup script for Snake-Vault"
+# :: --------------------------------------------------------------------- INFO
+# :: [Snake-Vault/setup.py]
+# :: author        : Pascal Malouin @ github.com/fantomH
+# :: created       : 2024-05-19 13:50:18 UTC
+# :: updated       : 2025-09-23 17:34:28 UTC
+# :: description   : "Setup script for Snake-Vault"
 
 from setuptools import (
     setup,
@@ -24,6 +24,12 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'lxml',
         'python-magic',
-    ]
+    ],
+    entry_points={
+        "console_scripts": [
+            "snake-sqlite=snake_vault.snake_sqlite.cli:main"
+        ]
+    },
 )
