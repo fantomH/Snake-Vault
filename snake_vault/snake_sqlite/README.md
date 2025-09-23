@@ -10,3 +10,11 @@
 # Snake-SQLite
 
 SQLite 3 Helper
+
+Provides the command `snake-sqlite`, which is the equivalent of `python -m snake_vault.snake_sqlite`.
+
+## Command `snake-sqlite`
+
+### SQLite db information:
+
+`snake-sqlite --db <db_name> --info`

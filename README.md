@@ -1,3 +1,12 @@
+<!--
+# :: --------------------------------------------------------------------- INFO
+# :: [Snake-Vault/README.md]
+# :: author        : Pascal Malouin @ github.com/fantomH
+# :: created       : 2025-09-21 15:08:02 UTC
+# :: updated       : 2025-09-23 18:13:54 UTC
+# :: description   : Snake-Vault README
+-->
+
 # Snake-Vault
 
 Miscellanous Python utilities.
@@ -58,7 +67,9 @@ Arguments:
 
 SQLite helper.
 
-Provides the command `snake-sqlite`.
+Provides the command `snake-sqlite`, which is the equivalent of `python -m snake_vault.snake_sqlite`.
+
+See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_sqlite/README.md for further information.
 
 ### snake_vault.timekeeper
 
