@@ -13,6 +13,14 @@ Miscellanous Python utilities.
 
 ## Package content
 
+### snake_vault.converter
+
+File converter.
+
+Provides the command `snake-converter`, which is the equivalent of `python -m snake_vault.converter`.
+
+See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/converter/README.md for further information.
+
 ### snake_vault.enigma
 
 `md5sum(filepath)`
