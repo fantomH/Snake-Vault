@@ -12,6 +12,8 @@ Core functions.
 import sqlite3
 from typing import Any
 
+from .udf import regexp
+
 def get_headers(db_path: str, table: str) -> list[str]:
     """
     Retrieve the column names (headers) of a table in a SQLite database.
@@ -103,6 +105,7 @@ def run_sql_file(db_path: str, sql_file: str) -> tuple[list[str], list[tuple[Any
         query = f.read()
 
     with sqlite3.connect(db_path) as conn:
+        conn.create_function("REGEXP", 2, regexp)
         cursor = conn.execute(query)
         rows = cursor.fetchall()
         headers = [desc[0] for desc in cursor.description] if cursor.description else []
