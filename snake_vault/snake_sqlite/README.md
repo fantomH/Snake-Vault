@@ -1,9 +1,9 @@
 <!-- INFO {{{
 
-# [/home/ghost/main/Snake-Vault/snake_vault/snake_sqlite/README.md]
-# author        : Pascal Malouin @https://github.com/fantomH
+# [/Snake-Vault/snake_vault/snake_sqlite/README.md]
+# author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-09-21 15:08:02 UTC
-# updated       : 2025-11-06 11:14:47 UTC
+# updated       : 2026-02-02 15:53:09 UTC
 # description   : Snake-SQLite README.
 
 }}} -->
