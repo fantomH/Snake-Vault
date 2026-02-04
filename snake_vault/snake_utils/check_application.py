@@ -15,5 +15,5 @@ def check_application(application: str, verbose: bool = False) -> bool:
             f"Install {application} from your OS package manager, then retry.\n"
         )
     if verbose:
-        print(f"[✓] {application} found".)
+        print(f"[✓] {application} found.")
     return True
