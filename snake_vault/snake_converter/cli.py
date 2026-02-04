@@ -6,6 +6,7 @@
 # description   : CLI for snake-converter
 
 import argparse
+import sys
 from . import (
     csv_to_json,
     xml_to_sqlite
@@ -100,21 +101,26 @@ def xml2sqlite_handler(args):
     )    
 
 def main():
-    parser = argparse.ArgumentParser(
-        prog="snake-converter",
-        description="Multi-format data converter."
-    )
 
-    subparsers = parser.add_subparsers(
-        dest="command",
-        required=True
-    )
+    try:
+        parser = argparse.ArgumentParser(
+            prog="snake-converter",
+            description="Multi-format data converter."
+        )
 
-    csv2json_args_parser(subparsers)
-    xml2sqlite_args_parser(subparsers)
+        subparsers = parser.add_subparsers(
+            dest="command",
+            required=True
+        )
 
-    args = parser.parse_args()
-    args.func(args)
+        csv2json_args_parser(subparsers)
+        xml2sqlite_args_parser(subparsers)
+
+        args = parser.parse_args()
+        args.func(args)
+    except ImportError as e:
+        print(e, file=sys.stderr)
+        sys.exit(1)
 
 # def main():
 #     parser = argparse.ArgumentParser(
