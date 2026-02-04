@@ -24,5 +24,5 @@ def main():
     if args.check_application:
         check_application(
             application=args.check_application,
-            verbose=args._verbose
+            verbose=args.verbose
         )
