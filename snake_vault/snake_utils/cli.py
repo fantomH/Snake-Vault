@@ -15,8 +15,14 @@ def main():
     parser.add_argument("--check-application",
                         metavar="APP",
                         help="Check if application is installed on the system.")
+    parser.add_argument("--verbose",
+                        action="store_true",
+                        help="Enable verbose output, if available.")
 
     args = parser.parse_args()
 
     if args.check_application:
-        check_application(application=args.check_application)
+        check_application(
+            application=args.check_application,
+            verbose=args._verbose
+        )
