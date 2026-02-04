@@ -6,7 +6,10 @@
 # description   : CLI for snake-converter
 
 import argparse
-from . import ( csv_to_json )
+from . import (
+    csv_to_json,
+    xml_to_sqlite
+    )
 
 # --- sub argument parsers.
 
@@ -30,12 +33,71 @@ def csv2json_args_parser(subparsers):
 
     p.set_defaults(func=csv2json_handler)
 
+def xml2sqlite(subparsers):
+    p = subparsers.add_parser(
+        "xml2sqlite",
+        help="Convert XML and create an sqlite table."
+    )
+
+    p.add_argument(
+        "--input",
+        required=True,
+        help="Input XML file path."
+    )
+
+    p.add_argument(
+        "--db",
+        required=True,
+        help="Output Sqlite database path."
+    )
+
+    p.add_argument(
+        "--table",
+        required=True,
+        help="Destination table name."
+    )
+
+    p.add_argument(
+        "--element-local",
+        dest="element_local",
+        type=str,
+        default=None,
+        help="Local XML element to extract (optional)."
+    )
+
+    p.add_argument(
+        "--batch-size",
+        type=int,
+        default=1000,
+        help="Batch size for processing."
+    )
+
+    p.add_argument(
+        "--drop-existing",
+        action="store_true",
+        help="Overwrite existing table."
+    )
+
+    p.set_defaults(func=xml2sqlite_handler)
+
 # --- converter handlers.
 
 def csv2json_handler(args):
     print(f"[*] Converting CSV to JSON.")
 
     csv_to_json(args.input, args.output)    
+
+def xml2sqlite_handler(args):
+    print(f"[*] Converting CSV to JSON.")
+
+    xml_to_sqlite(
+        xml_path=args.input,
+        db_path=args.db,
+        table=args.table,
+        element_local=args.element_local,
+        batch_size=args.batch_size,
+        drop_existing=args.drop_existing
+    )    
 
 def main():
     parser = argparse.ArgumentParser(
@@ -49,6 +111,7 @@ def main():
     )
 
     csv2json_args_parser(subparsers)
+    xml2sqlite_args_parser(subparsers)
 
     args = parser.parse_args()
     args.func(args)

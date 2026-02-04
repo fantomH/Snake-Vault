@@ -1,9 +1,9 @@
-# :: --------------------------------------------------------------------- INFO
-# :: [snake_vault/snake_sqlite/xml2sqlite.py]
-# :: author        : Pascal Malouin @ github.com/fantomH
-# :: created       : 2025-09-23 13:11:49 UTC
-# :: updated       : 2025-09-23 13:11:53 UTC
-# :: description   : Import xml data to SQLite table.
+# ------------------------------------------------------------------------ INFO
+# [Snake-Vault/snake_vault/snake_converter/xml2sqlite.py]
+# author        : Pascal Malouin (https://github.com/fantomH)
+# created       : 2025-09-23 13:11:49 UTC
+# updated       : 2026-02-04 20:23:37 UTC
+# description   : Import xml data to SQLite table.
 
 """
 Import xml data to SQLite table.
@@ -135,7 +135,7 @@ def detect_element(xml_path: str, max_probe: int = 1000) -> str:
 
     return element
 
-def import_xml(
+def xml_to_sqlite(
     xml_path: str,
     db_path: str,
     table: str,
@@ -208,6 +208,6 @@ def import_xml(
                     else:
                         break
 
-        # :: final flush
+        # --- final flush
         insert_batch(conn, table, batch)
         conn.commit()
