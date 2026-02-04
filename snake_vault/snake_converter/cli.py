@@ -33,7 +33,7 @@ def csv2json_args_parser(subparsers):
 
     p.set_defaults(func=csv2json_handler)
 
-def xml2sqlite(subparsers):
+def xml2sqlite_args_parser(subparsers):
     p = subparsers.add_parser(
         "xml2sqlite",
         help="Convert XML and create an sqlite table."
