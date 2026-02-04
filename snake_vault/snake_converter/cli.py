@@ -12,7 +12,7 @@ from . import ( csv_to_json )
 
 def csv2json_args_parser(subparsers):
     p = subparsers.add_parser(
-        "--csv2json",
+        "csv2json",
         help="Convert CSV to JSON."
     )
 
