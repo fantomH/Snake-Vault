@@ -15,7 +15,10 @@ import sqlite3
 from collections import Counter
 from typing import Dict, List, Tuple, Optional
 
-from lxml import etree as ET
+try:
+    from lxml import etree as ET
+except ImportError as e:
+    raise(ImportError("[!] Missing lxml module. Install with pip install snake-vault[converter].") from e
 
 def localname(tag: str) -> str:
     # :: "{uri}Name" -> "Name"   or  "Name" -> "Name"

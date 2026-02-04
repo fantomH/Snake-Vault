@@ -22,9 +22,8 @@ dependencies = []
 
 # --- Per packages dependencies.
 [project.optional-dependencies]
-converter = ["lxml", "python-magic"]
-sqlite = ["lxml"]
-all = ["lxml", "python-magic"]
+converter = ["lxml"]
+all = ["lxml"]
 
 [project.scripts]
 snake-converter = "snake_vault.snake_converter.cli:main"
