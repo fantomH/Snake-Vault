@@ -15,10 +15,6 @@ import sqlite3
 from collections import Counter
 from typing import Dict, List, Tuple, Optional
 
-try:
-    from lxml import etree as ET
-except ImportError as e:
-    raise ImportError("[!] Missing lxml module. Install with pip install snake-vault[converter].") from e
 
 def localname(tag: str) -> str:
     # :: "{uri}Name" -> "Name"   or  "Name" -> "Name"
@@ -162,6 +158,12 @@ def xml_to_sqlite(
         batch_size (int): Number of rows per batch insert (default: 1000).
         drop_existing (bool): If True, drop the destination table/view before importing.
     """
+
+
+    try:
+        from lxml import etree as ET
+    except ImportError as e:
+        raise ImportError("[!] Missing lxml module. Install with pip install snake-vault[converter].") from None
 
     with sqlite3.connect(db_path) as conn:
 
