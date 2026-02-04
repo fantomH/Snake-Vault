@@ -33,7 +33,7 @@ def csv2json_args_parser(subparsers):
 # --- converter handlers.
 
 def csv2json_handler(args):
-    print(f"👉 Convertir CSV to JSON.")
+    print(f"[*] Converting CSV to JSON.")
 
     csv_to_json(args.input, args.output)    
 

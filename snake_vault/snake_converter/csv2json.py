@@ -23,4 +23,4 @@ def csv_to_json(input_file: str, output_file: str):
     else:
         with open(output_file, "w", encoding="utf-8") as json_file:
             json_file.write(json_data)
-        print(f"[-] JSON written to: {output_file}")
+        print(f"[-] JSON written to {output_file}.")
