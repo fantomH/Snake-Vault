@@ -51,7 +51,7 @@ def main():
     csv2json_args_parser(subparsers)
 
     args = parser.parse_args()
-    args._func(args)
+    args.func(args)
 
 # def main():
 #     parser = argparse.ArgumentParser(
