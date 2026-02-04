@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------ INFO
-# [/Snake-Vault/snake_vault/converter/cli.py]
-# author        : Pascal Malouin @https://github.com/fantomH
+# [Snake-Vault/snake_vault/snake_converter/cli.py]
+# author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-10-20 15:43:58 UTC
-# updated       : 2025-10-20 15:43:58 UTC
-# description   : CLI
+# updated       : 2026-02-04 15:58:38 UTC
+# description   : CLI for snake-converter
 
 import argparse
 from . import ( csv_to_json )

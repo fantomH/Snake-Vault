@@ -1,0 +1,38 @@
+# ------------------------------------------------------------------------ INFO
+# [Snake-Vault/pyproject.toml]
+# author        : Pascal Malouin (https://github.com/fantomH)
+# created       : 2026-02-04 15:54:20 UTC
+# updated       : 2026-02-04 15:54:20 UTC
+# description   : Pyproject for Snake-Vault.
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Snake-Vault"
+version = "1.0.0"
+description = "Miscellaneous Python utils."
+readme = { file = "README.md", content-type = "text/markdown" }
+authors = [{ name = "Pascal Malouin", email = "pascal.malouin@gmail.com" }]
+urls = { Homepage = "https://github.com/fantomH/Snake-Vault/" }
+
+# --- Core dependencies.
+dependencies = []
+
+# --- Per packages dependencies.
+[project.optional-dependencies]
+converter = ["lxml", "python-magic"]
+sqlite = ["lxml"]
+all = ["lxml", "python-magic"]
+
+[project.scripts]
+snake-sqlite = "snake_vault.snake_sqlite.cli:main"
+snake-converter = "snake_vault.snake_converter.cli:main"
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
