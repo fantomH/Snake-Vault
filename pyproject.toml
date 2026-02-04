@@ -11,7 +11,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Snake-Vault"
-version = "1.0.0"
+version = "1.0.1"
 description = "Miscellaneous Python utils."
 readme = { file = "README.md", content-type = "text/markdown" }
 authors = [{ name = "Pascal Malouin", email = "pascal.malouin@gmail.com" }]
@@ -27,8 +27,9 @@ sqlite = ["lxml"]
 all = ["lxml", "python-magic"]
 
 [project.scripts]
-snake-sqlite = "snake_vault.snake_sqlite.cli:main"
 snake-converter = "snake_vault.snake_converter.cli:main"
+snake-sqlite = "snake_vault.snake_sqlite.cli:main"
+snake-utils = "snake_vault.snake_utils.cli:main"
 
 [tool.setuptools]
 zip-safe = false
