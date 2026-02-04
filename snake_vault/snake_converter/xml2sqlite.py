@@ -9,6 +9,8 @@
 Import xml data to SQLite table.
 """
 
+from __future__ import annotations
+
 import argparse
 import re
 import sqlite3
