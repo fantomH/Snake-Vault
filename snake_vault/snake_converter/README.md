@@ -30,8 +30,8 @@ snake-converter csv2json --input file.csv --output -
 
 ### csv_to_json(input_file, output_file)
 
-    * input_file: str. input CSV file.
-    * output_file: str. output JSON file path or '-' to print to terminal stdout.
+* input_file: str. input CSV file.
+* output_file: str. output JSON file path or '-' to print to terminal stdout.
 
 ## xml2sqlite
 
@@ -41,22 +41,22 @@ Convert data XML file to Sqlite table.
 
 Options:
 
-    * --input: input XML file.
-    * --db: output Sqlite database path. Will be created if non-existant.
-    * --table: output table. Will be created if non-existant.
-    * --element-local: Optional. Local name of the repeating record element. Will be auto-detected if this option is missing.
-    * --batch-size: Optional. Number of rows processed per batch (default: 1000).
-    * --drop-existing: Optional. Drop the destination table/view before importing (default: False).
+* --input: input XML file.
+* --db: output Sqlite database path. Will be created if non-existant.
+* --table: output table. Will be created if non-existant.
+* --element-local: Optional. Local name of the repeating record element. Will be auto-detected if this option is missing.
+* --batch-size: Optional. Number of rows processed per batch (default: 1000).
+* --drop-existing: Optional. Drop the destination table/view before importing (default: False).
 
 
 ### xml_to_sqlite(xml_path, db_path, table, element_local, batch_size, drop_existing)
 
-    * xml_path: str. Input XML file path.
-    * db_path: str. Output Sqlite database path.
-    * table: str. Output table name.
-    * element_local: str. Optional. Local name of the repeating record element.
-    * batch_size: int. Optional. Number of rows processed per batch (default: 1000). 
-    * drop_existing: bool. Optional. Drop the destination table/view before importing (default: False). 
+* xml_path: str. Input XML file path.
+* db_path: str. Output Sqlite database path.
+* table: str. Output table name.
+* element_local: str. Optional. Local name of the repeating record element.
+* batch_size: int. Optional. Number of rows processed per batch (default: 1000). 
+* drop_existing: bool. Optional. Drop the destination table/view before importing (default: False). 
 
 <!--
 # vim: foldmethod=marker
