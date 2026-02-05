@@ -1,25 +1,18 @@
-<!--
-# :: --------------------------------------------------------------------- INFO
-# :: [Snake-Vault/README.md]
-# :: author        : Pascal Malouin @ github.com/fantomH
-# :: created       : 2025-09-21 15:08:02 UTC
-# :: updated       : 2025-09-23 18:13:54 UTC
-# :: description   : Snake-Vault README
--->
+<!-- INFO {{{
+
+# [Snake-Vault/README.md]
+# author        : Pascal Malouin (https://github.com/fantomH)
+# created       : 2025-09-21 15:08:02 UTC
+# updated       : 2026-02-05 09:07:43 UTC
+# description   : Snake-Vault README
+
+}}} -->
 
 # Snake-Vault
 
 Miscellanous Python utilities.
 
 ## Package content
-
-### snake_vault.converter
-
-File converter.
-
-Provides the command `snake-converter`, which is the equivalent of `python -m snake_vault.converter`.
-
-See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/converter/README.md for further information.
 
 ### snake_vault.enigma
 
@@ -71,6 +64,14 @@ Arguments:
             `title` will not align columns. You will have to do it manually.
 ```
 
+### snake_vault.snake_converter
+
+Multi-format data converter.
+
+Provides the command `snake-converter`, which is the equivalent of `python -m snake_vault.snake_converter`.
+
+See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_converter/README.md for further information.
+
 ### snake_vault.snake_sqlite
 
 SQLite helper.
@@ -84,3 +85,15 @@ See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_sqlite/RE
 `time_as_id()`
 
 Returns a string representing the time now that can be used as an ID or a timestamp.
+
+### snake_vault.snake_utils
+
+Snake Utils.
+
+Provides the command `snake-utils`, which is the equivalent of `python -m snake_vault.snake_utils`.
+
+See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_utils/README.md for further information.
+
+<!--
+# vim: foldmethod=marker
+-->
