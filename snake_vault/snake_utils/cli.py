@@ -24,7 +24,7 @@ def check_application_parser(subparsers):
 
     p.add_argument(
         "--verbose",
-        defautl=False,
+        default=False,
         action="store_true",
         help="Enable verbose output."
     )
