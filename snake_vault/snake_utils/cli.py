@@ -6,6 +6,7 @@
 # description   : CLI for snake-utils
 
 import argparse
+import ast
 import sys
 from . import ( check_application,
                 sanitize_data )
@@ -68,10 +69,21 @@ def check_application_handler(args):
 
 def sanitize_data_handler(args):
 
+    replace_characters=args.replace_characters
+
+    if replace_characters:
+        try:
+            replace_characters = ast.literal_eval(replace_characters)
+        except Exception:
+            raise SystemExit(
+                "[!] --replace-characters must be a list of tuples. "
+                "Example: \"[('&','6')]\""
+            )
+    
     sanitized=sanitize_data(
         data=args.data,
         accepted_characters=args.accepted_characters,
-        replace_characters=args.replace_characters
+        replace_characters=replace_characters
         )
     print(sanitized)
 
