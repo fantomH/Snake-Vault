@@ -7,7 +7,8 @@
 
 import argparse
 import sys
-from . import ( check_application )
+from . import ( check_application,
+                sanitize_data )
 
 # --- sub argument parsers.
 
