@@ -20,6 +20,15 @@ Simple function to verify if an application is installed on the system.
 
 Use as `snake-utils --check-application pandoc`.
 
+Options:
+
+    * --verbose: Display message if application exists (Optional).
+
+### check_application(application, verbose)
+
+    * application: str. Application to verify.
+    * verbose: bool. Display message if application exists (Optional. Default: False).
+
 <!--
 # vim: foldmethod=marker
 -->
