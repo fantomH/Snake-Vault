@@ -10,6 +10,6 @@ Snake Utils.
 """
 
 from .check_application import ( check_application )
-from .sanitize_input import ( sanitize_input )
+from .sanitize_data import ( sanitize_data )
 
-__all__ = [ "check_application", "sanitize_input" ]
+__all__ = [ "check_application", "sanitize_data" ]
