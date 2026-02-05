@@ -53,7 +53,7 @@ def main():
             required=True
             )
 
-        check_application(subparsers)
+        check_application_parser(subparsers)
 
         args = parser.parse_args()
         args.func(args)
