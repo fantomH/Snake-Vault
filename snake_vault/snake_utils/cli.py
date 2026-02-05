@@ -45,7 +45,7 @@ def sanitize_data_parser(subparsers):
 
     p.add_argument(
         "--accepted-characters",
-        default=" a-zA-Z0-9_\-",
+        default=" a-zA-Z0-9_\\-",
         help="String of allowed characters (Optional. Default: ' a-zA-Z0-9_-')"
         )
 
