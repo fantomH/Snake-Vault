@@ -18,7 +18,7 @@ Provides the command `snake-utils`, which is the equivalent of `python -m snake_
 
 Simple function to verify if an application is installed on the system.
 
-Use as `snake-utils --check-application pandoc`.
+Use as `snake-utils check-application pandoc`.
 
 Options:
 

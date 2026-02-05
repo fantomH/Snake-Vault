@@ -1,20 +1,13 @@
-# :----------------------------------------------------------------------- INFO
-# :[snake_vault/snake_utils/sanitize_input.py]
-# :author        : Pascal Malouin (https://github.com/fantomH)
-# :created       : 2024-05-30 11:32:04 UTC
-# :updated       : 2024-08-16 19:11:02 UTC
-# :description   : Data manipulation utils
 # ------------------------------------------------------------------------ INFO
-# [/home/ghost/main/Snake-Vault/snake_vault/manipulator.py]
-# author        : Pascal Malouin @https://github.com/fantomH
-# created       : 2026-02-05 13:20:36 UTC
+# [Snake-Vault/snake_vault/snake_utils/sanitize_data.py]
+# author        : Pascal Malouin (https://github.com/fantomH)
+# created       : 2024-05-30 11:32:04 UTC
 # updated       : 2026-02-05 13:20:36 UTC
-# description   : description
-
+# description   : Data sanitizer.
 
 import re
 
-def sanitize_input(
+def sanitize_data(
     data,
      accepted_characters=" a-zA-Z0-9_\-",
      replace_characters=None):
