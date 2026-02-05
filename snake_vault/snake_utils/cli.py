@@ -68,11 +68,12 @@ def check_application_handler(args):
 
 def sanitize_data_handler(args):
 
-    sanitize_data(
+    sanitized=sanitize_data(
         data=args.data,
         accepted_characters=args.accepted_characters,
         replace_characters=args.replace_characters
         )
+    print(sanitized)
 
 def main():
 
