@@ -3,7 +3,7 @@
 # [Snake-Vault/snake_vault/snake_utils/README.md]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2026-02-04 16:27:02 UTC
-# updated       : 2026-02-05 16:42:16 UTC
+# updated       : 2026-02-06 12:08:40 UTC
 # description   : Snake-Utils README.
 
 }}} -->
@@ -32,6 +32,10 @@ Options:
 ## Sanitize data
 
 Function to sanitize a string.
+
+Takes a list, a tuple or a string.
+
+Give a list of tuples to replace_characters argument, to replace characters.
 
 Use as `snake-utils sanitize-data "Hello!"`
 
