@@ -27,6 +27,7 @@ all = ["lxml"]
 
 [project.scripts]
 snake-converter = "snake_vault.snake_converter.cli:main"
+snake-enigma = "snake_vault.snake_enigma.cli:main"
 snake-sqlite = "snake_vault.snake_sqlite.cli:main"
 snake-utils = "snake_vault.snake_utils.cli:main"
 
