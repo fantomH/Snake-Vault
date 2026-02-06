@@ -21,7 +21,6 @@ def file_md5sum__args_parser(subparsers):
 
     p.add_argument(
         "filepath",
-        required=True,
         help="Input file path."
     )
 
