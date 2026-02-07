@@ -12,9 +12,7 @@
 
 Miscellanous Python utilities.
 
-## Package content
-
-### snake_vault.files
+## snake_vault.files
 
 `file_info(f, filename=True, path=True, size=True, mime=True, md5=True)`
 
@@ -48,7 +46,7 @@ Arguments:
             `title` will not align columns. You will have to do it manually.
 ```
 
-### snake_vault.snake_converter
+## snake_vault.snake_converter
 
 Multi-format data converter.
 
@@ -56,13 +54,13 @@ Provides the command `snake-converter`, which is the equivalent of `python -m sn
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_converter/README.md for further information.
 
-### snake_vault.snake_enigma (sub-package)
+## snake_vault.snake_enigma (sub-package)
 
 Hash, cipher, encryption helper.
 
 Provides the command `snake-enigma`, which is the the equivalent of `python -m snake_vault.snake_enigma`.
 
-#### snake_vault.snake_enigma.md5
+### snake_vault.snake_enigma.md5
 
 md5 manipulation.
 
@@ -70,7 +68,7 @@ md5 manipulation.
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_enigma/README.md for further information.
 
-### snake_vault.snake_sqlite
+## snake_vault.snake_sqlite
 
 SQLite helper.
 
@@ -78,13 +76,13 @@ Provides the command `snake-sqlite`, which is the equivalent of `python -m snake
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_sqlite/README.md for further information.
 
-### snake_vault.timekeeper
+## snake_vault.timekeeper
 
 `time_as_id()`
 
 Returns a string representing the time now that can be used as an ID or a timestamp.
 
-### snake_vault.snake_utils
+## snake_vault.snake_utils
 
 Snake Utils.
 
