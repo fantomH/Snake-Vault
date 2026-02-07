@@ -64,7 +64,7 @@ Provides the command `snake-enigma`, which is the the equivalent of `python -m s
 
 md5 manipulation.
 
-* file_md5sum(filepath) -> Calculates the md5sum of a file.
+* file_md5sum(*filepath*) -> Calculates the md5sum of a file.
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_enigma/README.md for further information.
 
