@@ -14,12 +14,6 @@ Miscellanous Python utilities.
 
 ## Package content
 
-### snake_vault.enigma
-
-`md5sum(filepath)`
-
-Calculates the md5sum of a file.
-
 ### snake_vault.files
 
 `file_info(f, filename=True, path=True, size=True, mime=True, md5=True)`
@@ -61,6 +55,20 @@ Multi-format data converter.
 Provides the command `snake-converter`, which is the equivalent of `python -m snake_vault.snake_converter`.
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_converter/README.md for further information.
+
+### snake_vault.snake_enigma (sub-package)
+
+Hash, cipher, encryption helper.
+
+Provides the command `snake-enigma`, which is the the equivalent of `python -m snake_vault.snake_enigma`.
+
+#### snake_vault.snake_enigma.md5
+
+md5 manipulation.
+
+* file_md5sum(filepath) -> Calculates the md5sum of a file.
+
+See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_enigma/README.md for further information.
 
 ### snake_vault.snake_sqlite
 
