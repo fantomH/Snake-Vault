@@ -3,7 +3,7 @@
 # [Snake-Vault/README.md]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-09-21 15:08:02 UTC
-# updated       : 2026-02-05 09:07:43 UTC
+# updated       : 2026-02-07 14:39:15 UTC
 # description   : Snake-Vault README
 
 }}} -->

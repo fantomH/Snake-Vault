@@ -13,7 +13,7 @@ import hashlib
 
 def file_md5sum(filepath):
     '''
-    Calculates the md5sum of a file.
+    Calculate the md5sum of a file.
     '''
 
     md5 = hashlib.md5()
