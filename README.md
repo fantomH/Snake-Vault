@@ -46,11 +46,19 @@ Arguments:
             `title` will not align columns. You will have to do it manually.
 ```
 
-## snake_vault.snake_converter
+## snake_vault.snake_converter (sub-package)
 
 Multi-format data converter.
 
 Provides the command `snake-converter`, which is the equivalent of `python -m snake_vault.snake_converter`.
+
+### snake_vault.snake_converter.csv2json
+
+* csv_to_json(*input_file, output_file*) -> Convert CSV file to JSON.
+
+### snake_vault.snake_converter.xml2sqlite
+
+* xml_to_sqlite(*xml_path, db_path, table, element_local, batch_size, drop_existing*) -> Stream-parse an XML file and insert rows into a SQLite table in batches.
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_converter/README.md for further information.
 
@@ -68,7 +76,7 @@ md5 manipulation.
 
 See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_enigma/README.md for further information.
 
-## snake_vault.snake_sqlite
+## snake_vault.snake_sqlite (sub-package)
 
 SQLite helper.
 

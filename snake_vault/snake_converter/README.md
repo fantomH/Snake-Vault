@@ -28,7 +28,7 @@ snake-converter csv2json --input file.csv --output file.json
 snake-converter csv2json --input file.csv --output -
 ```
 
-### csv_to_json(input_file, output_file)
+### csv_to_json(*input_file, output_file*)
 
 * input_file: str. input CSV file.
 * output_file: str. output JSON file path or '-' to print to terminal stdout.
@@ -49,7 +49,7 @@ Options:
 * --drop-existing: Optional. Drop the destination table/view before importing (default: False).
 
 
-### xml_to_sqlite(xml_path, db_path, table, element_local, batch_size, drop_existing)
+### xml_to_sqlite(*xml_path, db_path, table, element_local, batch_size, drop_existing*)
 
 * xml_path: str. Input XML file path.
 * db_path: str. Output Sqlite database path.
