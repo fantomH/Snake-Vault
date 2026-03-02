@@ -1,9 +1,9 @@
 <!-- INFO {{{
 
-# [Snake-Vault/snake_vault/snake_utils/README.md]
+# [/Snake-Vault/snake_vault/snake_utils/README.md]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2026-02-04 16:27:02 UTC
-# updated       : 2026-02-06 12:08:40 UTC
+# updated       : 2026-03-02 15:38:38 UTC
 # description   : Snake-Utils README.
 
 }}} -->
@@ -14,7 +14,7 @@ Snake Utils.
 
 Provides the command `snake-utils`, which is the equivalent of `python -m snake_vault.snake_utils`.
 
-## check_application.py
+## [ check_application.py ]
 
 Simple function to verify if an application is installed on the system.
 
@@ -28,6 +28,25 @@ Options:
 
 * application: str. Application to verify.
 * verbose: bool. Display message if application exists (Optional. Default: False).
+
+## [ ini_configuration.py ]
+
+INI configuration file utilities.
+
+### load_config(path)
+
+* path: str. Path of INI configuration file.
+
+Returns a ConfigParser object.
+
+Usage:
+
+```
+cfg = load_config(file.conf)
+
+name = cfg["person"]["name"]
+phone = cfg["person"]["phone"]
+```
 
 ## Sanitize data
 
