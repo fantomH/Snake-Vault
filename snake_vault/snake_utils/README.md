@@ -24,7 +24,7 @@ Options:
 
 * --verbose: Display message if application exists (Optional).
 
-### check_application(*application*, **verbose*)
+### check_application(*application*, *verbose*)
 
 * application: str. Application to verify.
 * verbose: bool. Display message if application exists (Optional. Default: False).
