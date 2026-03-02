@@ -24,7 +24,7 @@ Options:
 
 * --verbose: Display message if application exists (Optional).
 
-### check_application(**application**, **verbose**)
+### check_application(__application__, __verbose__)
 
 * application: str. Application to verify.
 * verbose: bool. Display message if application exists (Optional. Default: False).
@@ -33,7 +33,7 @@ Options:
 
 INI configuration file utilities.
 
-### load_config(**path**)
+### load_config(__path__)
 
 * path: str. Path of INI configuration file.
 
