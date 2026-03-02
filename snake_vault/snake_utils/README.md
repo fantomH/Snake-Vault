@@ -41,7 +41,9 @@ Returns a ConfigParser object.
 
 Usage:
 
-```
+```python
+from snake_vault.snake_utils.ini_configuration import load_config
+
 cfg = load_config(file.conf)
 
 name = cfg["person"]["name"]
