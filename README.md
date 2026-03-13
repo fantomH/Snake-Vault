@@ -3,10 +3,12 @@
 # [Snake-Vault/README.md]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-09-21 15:08:02 UTC
-# updated       : 2026-02-07 14:39:15 UTC
+# updated       : 2026-03-13 13:56:02 UTC
 # description   : Snake-Vault README
 
 }}} -->
+
+<img src="logo.png" width="200">
 
 # Snake-Vault
 
@@ -90,7 +92,7 @@ See https://github.com/fantomH/Snake-Vault/blob/main/snake_vault/snake_sqlite/RE
 
 Returns a string representing the time now that can be used as an ID or a timestamp.
 
-## snake_vault.snake_utils
+## snake_vault.snake_utils (sub-package)
 
 Snake Utils.
 
