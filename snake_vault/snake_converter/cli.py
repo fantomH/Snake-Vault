@@ -2,17 +2,18 @@
 # [Snake-Vault/snake_vault/snake_converter/cli.py]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-10-20 15:43:58 UTC
-# updated       : 2026-02-04 15:58:38 UTC
+# updated       : 2026-04-14 11:31:19 UTC
 # description   : CLI for snake-converter
 
 import argparse
 import sys
 from . import (
     csv_to_json,
+    csv_to_sqlite,
     xml_to_sqlite
     )
 
-# --- sub argument parsers.
+# --| Sub Argument Parsers.
 
 def csv2json_args_parser(subparsers):
     p = subparsers.add_parser(
@@ -33,6 +34,62 @@ def csv2json_args_parser(subparsers):
     )
 
     p.set_defaults(func=csv2json_handler)
+
+def csv2sqlite_args_parser(subparsers):
+    p = subparsers.add_parser(
+        "csv2sqlite",
+        help="Convert csv file to an sqlite table."
+    )
+
+    p.add_argument(
+        "--src-csv",
+        required=True,
+        help="Input CSV file path."
+    )
+
+    p.add_argument(
+        "--dst-db",
+        required=True,
+        help="Output Sqlite database path."
+    )
+
+    p.add_argument(
+        "--dst-table",
+        required=True,
+        help="Destination table name."
+    )
+
+    p.add_argument(
+        "--delimiter",
+        dest="delimiter",
+        type=str,
+        default=",",
+        help="CSV field delimiter. (Default: ',')."
+    )
+
+    p.add_argument(
+        "--encoding",
+        dest="encoding",
+        type=str,
+        default="utf-8",
+        help="CSV encoding. (Default: 'utf-8')."
+    )
+
+    p.add_argument(
+        "--batch-size",
+        type=int,
+        default=1000,
+        help="Batch size for processing."
+    )
+
+    p.add_argument(
+        "--drop-existing",
+        action="store_true",
+        help="Overwrite existing table."
+    )
+
+    p.set_defaults(func=csv2sqlite_handler)
+
 
 def xml2sqlite_args_parser(subparsers):
     p = subparsers.add_parser(
@@ -81,15 +138,28 @@ def xml2sqlite_args_parser(subparsers):
 
     p.set_defaults(func=xml2sqlite_handler)
 
-# --- converter handlers.
+# --| Converter Handlers.
 
 def csv2json_handler(args):
     print(f"[*] Converting CSV to JSON.")
 
     csv_to_json(args.input, args.output)    
 
+def csv2sqlite_handler(args):
+    print(f"[*] Converting CSV to Sqlite.")
+
+    csv_to_sqlite(
+        csv_path=args.src_csv,
+        db_path=args.dst_db,
+        table=args.dst_table,
+        delimiter=args.delimiter,
+        encoding=args.encoding,
+        batch_size=args.batch_size,
+        drop_existing=args.drop_existing
+    )    
+
 def xml2sqlite_handler(args):
-    print(f"[*] Converting CSV to JSON.")
+    print(f"[*] Converting XML to Sqlite.")
 
     xml_to_sqlite(
         xml_path=args.input,
@@ -114,6 +184,7 @@ def main():
         )
 
         csv2json_args_parser(subparsers)
+        csv2sqlite_args_parser(subparsers)
         xml2sqlite_args_parser(subparsers)
 
         args = parser.parse_args()

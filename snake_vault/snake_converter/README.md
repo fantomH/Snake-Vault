@@ -3,7 +3,7 @@
 # [Snake-Vault/snake_vault/snake_converter/README.md]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-10-20 16:23:59 UTC
-# updated       : 2026-02-05 09:10:09 UTC
+# updated       : 2026-04-14 11:27:37 UTC
 # description   : Snake-Converter README.
 
 }}} -->
@@ -32,6 +32,32 @@ snake-converter csv2json --input file.csv --output -
 
 * input_file: str. input CSV file.
 * output_file: str. output JSON file path or '-' to print to terminal stdout.
+
+## csv2sqlite
+
+Convert a CSV file to Sqlite table.
+
+### Command `snake-converter csv2sqlite [options]`
+
+Options:
+
+* --src-csv: Input CSV path.
+* --dst-db: Output Sqlite database path.
+* --dst-table: Destination table name.
+* --delimiter: Optional. CSV field delimiter (defautl: ",").
+* --encoding: Optional. CSV encoding (default: "utf-8").
+* --batch-size: Optional. Batch size for processing (default: 2000).
+* --drop-existing: Optional. Overwrites existing destination tables.
+
+### csv_to_sqlite(*src_csv, dst_db, dst_table, delimiter, encoding, batch_size, drop_existing*)
+
+* src_csv: str or Path. Input CSV file.
+* dst_db: str or Path. Output Sqlite database file.
+* dst_table: str. Destination table name.
+* delimiter: str (defautl: ","). CSV field delimiter.
+* encoding: str (default: "utf-8"). CSV encoding.
+* batch_size: int (default: 2000). Batch size for processing.
+* drop_existing: bool (default: False). If True, overwrites existing destination tables.
 
 ## xml2sqlite
 
