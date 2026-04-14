@@ -2,7 +2,7 @@
 # [/Snake-Vault/snake_vault/snake_converter/csv2sqlite.py]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2026-04-13 20:50:49 UTC
-# updated       : 2026-04-13 20:50:49 UTC
+# updated       : 2026-04-14 11:49:10 UTC
 # description   : Convert CSV to SQLite.
 
 import csv
@@ -76,7 +76,7 @@ def csv_to_sqlite(
         if not headers:
             raise ValueError("No headers found in first row.")
 
-        # Quote identifiers safely (SQLite accepts double quotes)
+        # --| Quote identifiers safely (SQLite accepts double quotes).
         qtable = '"' + dst_table.replace('"', '""') + '"'
         qcols = ['"' + c.replace('"', '""') + '"' for c in headers]
 
@@ -91,7 +91,7 @@ def csv_to_sqlite(
 
         buf: list[list[Optional[str]]] = []
         for row in reader:
-            # Normalize row length to header count
+            # --| Normalize row length to header count.
             if len(row) < len(headers):
                 row = row + [""] * (len(headers) - len(row))
             elif len(row) > len(headers):
