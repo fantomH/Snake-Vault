@@ -149,9 +149,9 @@ def csv2sqlite_handler(args):
     print(f"[*] Converting CSV to Sqlite.")
 
     csv_to_sqlite(
-        csv_path=args.src_csv,
-        db_path=args.dst_db,
-        table=args.dst_table,
+        src_csv=args.src_csv,
+        dst_db=args.dst_db,
+        dst_table=args.dst_table,
         delimiter=args.delimiter,
         encoding=args.encoding,
         batch_size=args.batch_size,
