@@ -1,4 +1,4 @@
-# ------------------------------------------------------------------------ INFO
+# [+] -------------------------------------------------------------------| INFO
 # [/Snake-Vault/snake_vault/snake_converter/csv2sqlite.py]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2026-04-13 20:50:49 UTC

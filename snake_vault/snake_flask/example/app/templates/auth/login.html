@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <form method="POST">
+
+        <h1>{{ display_language["LOGIN-h1"] }}</h1>
+        <div class="form-group">
+            <label for="email">{{ display_language["LOGIN-user"] }}</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                placeholder="{{ display_language["LOGIN-user_placeholder"] }}"/>
+            <label for="password">{{ display_language["LOGIN-password"] }}</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="{{ display_language["LOGIN-password_placeholder"] }}"/>
+            <br />
+            <div align="right">
+                <button class="btn btn-dark" type="submit">{{ display_language["LOGIN-login"] }}</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

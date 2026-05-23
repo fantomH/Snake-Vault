@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <form method="POST" action="">
+
+    <h1>{{ display_language["SIGNUP-h1"] }}</h1>
+    <div class="border border-3 border-dark rounded p-3">
+    <p>{{ display_language["SIGNUP-message"] }}</p>
+    </div>
+    <br />
+    <div class="form-group">
+
+      <label for="firstname">{{ display_language["SIGNUP-firstname"] }}</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="firstname"
+          name="firstname"
+          class="form-control"
+          value="{{ form_data.firstname }}"
+          placeholder="{{ display_language["SIGNUP-firstname_placeholder"] }}"/>
+      </div>
+
+      <label for="lastname">{{ display_language["SIGNUP-lastname"] }}</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="lastname"
+          name="lastname"
+          class="form-control"
+          value="{{ form_data.lastname }}"
+          placeholder="{{ display_language["SIGNUP-lastname_placeholder"] }}"/>
+      </div>
+
+      <label for="username">{{ display_language["SIGNUP-user"] }}</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="form-control"
+          value="{{ form_data.username }}"
+          placeholder="{{ display_language["SIGNUP-user_placeholder"] }}"/>
+      </div>
+
+      <label for="email">{{ display_language["SIGNUP-email"] }}</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          class="form-control"
+          value="{{ form_data.email }}"
+          placeholder="{{ display_language["SIGNUP-email_placeholder"] }}"/>
+      </div>
+
+      <label for="password1">{{ display_language["SIGNUP-password1"] }}</label>
+      <div class="input-group">
+        <input
+          type="password"
+          id="password1"
+          name="password1"
+          class="form-control"
+          placeholder="{{ display_language["SIGNUP-password1_placeholder"] }}"/>
+        <button
+          class="btn btn-dark"
+          type="button"
+          id="togglePassword1">
+
+          <span class="material-symbols-outlined">
+            visibility
+          </span>
+
+        </button>
+      </div>
+
+      <label for="password2">{{ display_language["SIGNUP-password2"] }}</label>
+      <div class="input-group">
+        <input
+          type="password"
+          id="password2"
+          name="password2"
+          class="form-control"
+          placeholder="{{ display_language["SIGNUP-password2_placeholder"] }}"/>
+        <button
+          class="btn btn-dark"
+          type="button"
+          id="togglePassword2">
+
+          <span class="material-symbols-outlined">
+            visibility
+          </span>
+
+        </button>
+      </div>
+      <br />
+      <div align="right">
+        <button class="btn btn-dark" type="submit">{{ display_language["SIGNUP-submit_button"] }}</button>
+      </div>
+    </div>
+
+  </form>
+
+{% endblock %}
+
+{% block scripts_footer %}
+    <script>
+      setupPasswordToggle("togglePassword1", "password1");
+      setupPasswordToggle("togglePassword2", "password2");
+    </script>
+{% endblock %}
