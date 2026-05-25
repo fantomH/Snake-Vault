@@ -88,4 +88,7 @@ def create_app(test_config=None):
     from .routes.auth import auth
     app.register_blueprint(auth, url_prefix="/")
 
+    from .routes.admin import admin
+    app.register_blueprint(admin, url_prefix="/")
+
     return app

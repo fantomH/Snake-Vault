@@ -1,0 +1,11 @@
+{# templates/admin/users.html #}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Users</h1>
+
+{{ table_generator.load() | safe }}
+
+{% endblock %}
