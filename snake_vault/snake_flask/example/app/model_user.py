@@ -83,6 +83,52 @@ class User:
 
         conn.commit()
 
+    # [+] ---------------| update user
+    @classmethod
+    def update_user(cls, user_id, **fields):
+
+        if not fields:
+            return
+
+        conn = get_db(current_app.config["DATABASE"])
+
+        allowed_fields = {
+            "username",
+            "firstname",
+            "lastname",
+            "email",
+            "password_hash",
+            "is_active",
+        }
+
+        updates = []
+        values = []
+
+        for field, value in fields.items():
+
+            if field not in allowed_fields:
+                continue
+
+            updates.append(f"{field} = ?")
+
+            if field == "is_active":
+                value = int(value)
+
+            values.append(value)
+
+        if not updates:
+            return
+
+        values.append(user_id)
+
+        conn.execute(f"""
+            UPDATE {cls.TABLE_NAME}
+            SET {", ".join(updates)}
+            WHERE id = ?
+        """, values)
+
+        conn.commit()
+
     # ------------------------------| FETCH_BY_USERNAME
     @classmethod
     def fetch_by_username(cls, username):

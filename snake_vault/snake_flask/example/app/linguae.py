@@ -74,6 +74,7 @@ english = {
     "SIGNUP-password2_placeholder": "Confirm your password",
     "SIGNUP-submit_button": "Submit",
     "SIGNUP-passwords_dont_match": "Passwords don't match!",
+    "ADMIN-USERS-h1": "Users",
 }
 
 french = {
@@ -119,6 +120,12 @@ french = {
     "SIGNUP-password2_placeholder": "Confirmer votre mot de passe",
     "SIGNUP-submit_button": "Soumettre",
     "SIGNUP-passwords_dont_match": "Les mots de passe ne concordent pas!",
+    "ADMIN-USERS-h1": "Utilisateurs",
+    "SNAKETABLE-search_placeholder": "Recherche...",
+    "SNAKETABLE-button_previous": "< Précédent",
+    "SNAKETABLE-of": "de",
+    "SNAKETABLE-button_next": "Suivant >",
+    "SNAKETABLE-click_to_copy": "Cliquer pour copier",
 }
 
 languages = {

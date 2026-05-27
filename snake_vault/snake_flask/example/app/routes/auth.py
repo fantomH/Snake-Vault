@@ -16,22 +16,12 @@ from flask import (
     session,
     url_for
 )
-from werkzeug.security import (
-    check_password_hash
-)
+from werkzeug.security import ( check_password_hash )
 
-from ..linguae import (
-    get_display_language
-)
-from ..login_manager import (
-    login_required
-)
-from ..model_user import (
-    User
-)
-from ..validator import (
-    is_valid_password
-)
+from ..linguae import ( get_display_language )
+from ..login_manager import ( login_required )
+from ..model_user import ( User )
+from ..validator import ( is_valid_password )
 
 auth = Blueprint("auth", __name__)
 

@@ -59,6 +59,9 @@ function getColumns(container) {
         .map(th => ({
             name: th.dataset.column,
             type: th.dataset.type || "text",
+            url: th.dataset.url || "",
+            text: th.dataset.text || "",
+            class: th.dataset.class || "",
         }));
 }
 
@@ -139,6 +142,10 @@ function initSnakeTable(container) {
             sort_direction: sortDirection,
         });
 
+        const langOf = container.dataset.langOf;
+        const langClickToCopy = container.dataset.langClickToCopy;
+        const updateUrl = container.dataset.updateUrl;
+
         const response = await fetch(`${dataUrl}?${params.toString()}`);
         const data = await response.json();
 
@@ -175,11 +182,37 @@ function initSnakeTable(container) {
                         >
                     `;
 
+                    const checkbox = td.querySelector("input");
+
+                    checkbox.addEventListener("change", async () => {
+                        const response = await fetch(updateUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            id: checkbox.dataset.id,
+                            column: checkbox.dataset.column,
+                            value: checkbox.checked,
+                        }),
+                    });
+                });
+
+                } else if (column.type === "link-button") {
+
+                    const url = renderUrl(column.url, row);
+
+                    td.innerHTML = `
+                        <a href="${url}" class=" btn btn-sm btn-dark">
+                            ${column.text || "Link"}
+                        </a>
+                    `;
+
                 } else {
 
                     td.textContent = row[column.name] ?? "";
 
-                    td.title = "Click to copy";
+                    td.title = `${langClickToCopy}`;
                     td.classList.add("snake-table-copyable");
 
                     td.addEventListener("click", async () => {
@@ -205,7 +238,7 @@ function initSnakeTable(container) {
 
         const end = Math.min(data.page * data.page_size, data.total);
 
-        info.textContent = `${start}-${end} of ${data.total}`;
+        info.textContent = `${start}-${end} ${langOf} ${data.total}`;
 
         prevButton.disabled = page <= 1;
         nextButton.disabled = end >= data.total;
@@ -240,6 +273,12 @@ function initSnakeTable(container) {
     loadTable();
 }
 
+function renderUrl(urlTemplate, row) {
+    return urlTemplate.replace(
+        /\{(.*?)\}/g,
+        (_, field) => encodeURIComponent(row[field] ?? "")
+    );
+}
 
 function enableColumnResize(container) {
     // Enable column resizing

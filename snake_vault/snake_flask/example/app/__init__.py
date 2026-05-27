@@ -36,8 +36,8 @@ def create_app(test_config=None):
     # --| Default config.
     app.config.from_mapping(
         DATABASE=app.instance_path + "/data.sqlite",
-        # DISPLAY_LANGUAGE="french",
-        DISPLAY_LANGUAGE="english",
+        DISPLAY_LANGUAGE="french",
+        # DISPLAY_LANGUAGE="english",
         SECRET_KEY="secret",
         SESSION_TIMEOUT=60,
     )

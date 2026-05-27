@@ -29,8 +29,28 @@ The table HTML is injected into templates with:
     {{ table_generator.load() }}
 """
 
-from flask import request
+from flask import ( current_app,
+                    render_template_string,
+                    request )
 from markupsafe import Markup
+
+# [+] ---------------| Table languages definition
+table_english = {
+    "SNAKETABLE-search_placeholder": "Search...",
+    "SNAKETABLE-button_previous": "< Previous",
+    "SNAKETABLE-of": "of",
+    "SNAKETABLE-button_next": "Next >",
+    "SNAKETABLE-click_to_copy": "Click to copy",
+}
+
+table_french = {
+    "SNAKETABLE-search_placeholder": "Recherche...",
+    "SNAKETABLE-button_previous": "< Précédent",
+    "SNAKETABLE-of": "de",
+    "SNAKETABLE-button_next": "Suivant >",
+    "SNAKETABLE-click_to_copy": "Cliquer pour copier",
+}
+
 
 class TableGenerator:
     """
@@ -64,10 +84,38 @@ class TableGenerator:
         {{ table_generator.load() }}
     """
 
+    @classmethod
+    def get_display_language(self, languages: dict) -> dict:
+        """
+        Takes a dictionary of dictionaries.
+        Returns a dictionary of definition according to the app language.
+
+        For example:
+
+        default_english = {"yes": "yes"}
+        defautl_french = {"yes": "oui"}
+        languages = {
+            "english": default_english,
+            "french": default_french
+        }
+
+        lang = TableGenerator.get_display_language(languages)
+
+        or,
+
+        lang = TableGenerator.get_display_language(
+            {"english": default_english, "french": default_french}
+        )
+        """
+
+        return languages[current_app.config["DISPLAY_LANGUAGE"]]
+
+
     def __init__(
         self,
         table_id,
         data_url,
+        data_update_url,
         db,
         columns,
         source_table=None,
@@ -112,6 +160,7 @@ class TableGenerator:
 
         self.table_id = table_id
         self.data_url = data_url
+        self.data_update_url = data_update_url
         self.db = db
         self.columns = columns
         self.source_table = source_table
@@ -133,6 +182,8 @@ class TableGenerator:
         - Adds the search input.
         - Loads snake-table.js.
         """
+
+        display_language = self.get_display_language({"english": table_english, "french": table_french})
 
         html = f"""
 <style>
@@ -190,8 +241,11 @@ class TableGenerator:
         z-index: 9999;
     }}
 
-    /* [+] Copyable cells                                                    */
-    /* Indicates text cells can be clicked to copy.                          */
+    /* ------------------------------------------------------------------------
+    [+] Copyable cells
+        Indicates text cells can be clicked to copy.
+    ------------------------------------------------------------------------ */
+
     #{self.table_id} .snake-table-copyable {{
         cursor: copy;
     }}
@@ -202,13 +256,16 @@ class TableGenerator:
     id="{self.table_id}"
     class="snake-table"
     data-url="{self.data_url}"
+    data-update-url="{self.data_update_url}"
+    data-lang-of="{{{{ display_language.get('SNAKETABLE-of', 'of') }}}}"
+    data-lang-click-to-copy="{{{{ display_language.get('SNAKETABLE-click_to_copy', 'Click to copy') }}}}"
 >
     <!-- [+] Top controls -->
     <div class="d-flex justify-content-between mb-2">
         <input
             type="text"
             class="form-control w-25 snake-table-search"
-            placeholder="Search..."
+            placeholder="{{{{ display_language.get('SNAKETABLE-search_placeholder', 'Search...') }}}}"
         >
 
         <select class="form-select w-auto snake-table-page-size">
@@ -233,15 +290,15 @@ class TableGenerator:
 
     <!-- [+] Pagination controls -->
     <div class="d-flex justify-content-between align-items-center">
-        <button class="btn btn-sm btn-secondary snake-table-prev">Previous</button>
+        <button class="btn btn-sm btn-dark snake-table-prev">{{{{ display_language.get('SNAKETABLE-button_previous', '< Previous') }}}}</button>
         <span class="snake-table-info"></span>
-        <button class="btn btn-sm btn-secondary snake-table-next">Next</button>
+        <button class="btn btn-sm btn-dark snake-table-next">{{{{ display_language.get('SNAKETABLE-button_next', 'Next >') }}}}</button>
     </div>
 </div>
 
 <script src="/static/snake-table.js"></script>
 """
-        return Markup(html)
+        return Markup(render_template_string(html, display_language=display_language))
 
     def _render_headers(self):
         """
@@ -270,6 +327,11 @@ class TableGenerator:
     data-column="{column["name"]}"
     data-type="{column_type}"
     data-sortable="{sortable}"
+
+    data-url="{column.get("url", "")}"
+    data-text="{column.get("text", "")}"
+    data-class="{column.get("class", "")}"
+
     style="position: relative;"
 >
     <!-- Visible column label -->
@@ -317,11 +379,16 @@ class TableGenerator:
         list[str]
         """
 
-        return [
+        columns = [
             column["name"]
             for column in self.columns
             if column.get("db", True)
         ]
+
+        if "id" not in columns:
+            columns.insert(0, "id")
+
+        return columns
 
     def get_select_clause(self):
         """
