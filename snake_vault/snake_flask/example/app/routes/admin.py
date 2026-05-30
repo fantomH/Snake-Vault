@@ -70,8 +70,63 @@ def users_update():
     })
 
 # [+] ------------------------------| /admin/users/<username>/
-@admin.route("/admin/users/account/<username>/")
+@admin.route("/admin/users/account/<username>/", methods=["GET", "POST"])
 def user_account(username):
 
     user_account = User.fetch_by_username(username)
-    return f"Editing user: {user_account}"
+    display_language = get_display_language()
+
+    if request.method == "POST":
+
+        form_data = {}
+
+        form_data["firstname"] = request.form.get("firstname", "").strip()
+        form_data["lastname"] = request.form.get("lastname", "").strip()
+        form_data["email"] = request.form.get("email", "").strip()
+
+        password1 = request.form.get("password1", "").strip()
+        password2 = request.form.get("password2", "").strip()
+
+
+        # validated = True
+
+        # if len(form_data["firstname"]) < 1:
+            # flash(display_language.get("USER-ACCOUNT-firstname", "First name") + " " + display_language.get("USER-ACCOUNT-cannot_be_empty", "cannot be empty"), "danger")
+            # validated = False
+
+        # if len(form_data["lastname"]) < 1:
+            # flash(display_language.get("USER-ACCOUNT-lastname", "Last name") + " " + display_language.get("USER-ACCOUNT-cannot_be_empty", "cannot be empty"), "danger")
+            # validated = False
+
+        # if len(form_data["username"]) < 1:
+            # flash(display_language["SIGNUP-user"] + " " + display_language["SIGNUP-cannot_be_empty"], "danger")
+            # validated = False
+
+        # if User.fetch_by_username(form_data["username"]):
+            # flash(display_language["SIGNUP-user_already_exists"], "danger")
+            # validated = False
+
+        # if User.fetch_by_email(form_data["email"]):
+            # flash(display_language["SIGNUP-email_already_exists"], "danger")
+            # validated = False
+
+        # if not is_valid_password(password1):
+            # flash(display_language["SIGNUP-invalid_password"], "danger")
+            # validated = False
+            
+        # if password1 != password2:
+            # flash(display_language["SIGNUP-passwords_dont_match"], "danger")
+            # validated = False
+
+        # if not validated:
+            # return render_template(
+                # "auth/sign-up.html",
+                # display_language=display_language,
+                # form_data=form_data,
+            # )
+
+    return render_template(
+        "admin/user-account.html",
+        user_account=user_account,
+        display_language=display_language,
+    )

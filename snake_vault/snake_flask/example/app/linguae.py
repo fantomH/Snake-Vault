@@ -5,13 +5,9 @@
 # updated       : 2026-05-19 20:29:22 UTC
 # description   : Language functions.
 
-from flask import (
-    current_app,
-    url_for
-)
-from markupsafe import (
-    Markup,
-)
+from flask import ( current_app,
+                    url_for )
+from markupsafe import ( Markup )
 
 english = {
     "BUTTON-save": "Save",
@@ -75,9 +71,21 @@ english = {
     "SIGNUP-submit_button": "Submit",
     "SIGNUP-passwords_dont_match": "Passwords don't match!",
     "ADMIN-USERS-h1": "Users",
+    "USER-ACCOUNT-title": "User Account",
+    "USER-ACCOUNT-h1": "User Account ",
+    "USER-ACCOUNT-firstname_label": "First Name",
+    "USER-ACCOUNT-lastname_label": "Last Name",
+    "USER-ACCOUNT-email_label": "Email",
+    "USER-ACCOUNT-change_password": "Change password",
+    "USER-ACCOUNT-new_password_label": "New password",
+    "USER-ACCOUNT-new_password_placeholder": "Enter new password",
+    "USER-ACCOUNT-confirm_password_label": "Confirmation of new password",
+    "USER-ACCOUNT-confirm_password_placeholder": "Confirm new password",
+    "USER-ACCOUNT-cannot_be_empty": "cannot be empty",
 }
 
 french = {
+    "BUTTON-save": "Sauvegarder",
     "HOME-title": "Bienvenu",
     "HOME-h1": "Bienvenu",
     "LOGIN-title": "Connexion",
@@ -88,6 +96,18 @@ french = {
     "LOGIN-password_placeholder": "Entrez votre mot de passe",
     "LOGIN-login": "Connexion",
     "LOGIN-wrong_password": "Le nom d'utilisateur ou le mot de passe est incorrect.",
+    "MYACCOUNT-title": "Mon compte",
+    "MYACCOUNT-h1": "Mon compte ",
+    "MYACCOUNT-firstname_label": "Prénom",
+    "MYACCOUNT-lastname_label": "Nom",
+    "MYACCOUNT-email_label": "Courriel",
+    "MYACCOUNT-change_your_password": "Modification du mot de passe",
+    "MYACCOUNT-current_password_label": "Mot de passe courant",
+    "MYACCOUNT-current_password_placeholder": "Saisir votre mot de pass",
+    "MYACCOUNT-new_password_label": "Nouveau mot de passe",
+    "MYACCOUNT-new_password_placeholder": "Saisir le nouveau mot de passe",
+    "MYACCOUNT-confirm_password_label": "Confirmation du mot de passe",
+    "MYACCOUNT-confirm_password_placeholder": "Confirmer votre nouveau mot de passe",
     "SIGNUP-title": "Inscription",
     "SIGNUP-h1": "Inscription",
     "SIGNUP-message": Markup("Message<br/>Message"),
@@ -121,11 +141,17 @@ french = {
     "SIGNUP-submit_button": "Soumettre",
     "SIGNUP-passwords_dont_match": "Les mots de passe ne concordent pas!",
     "ADMIN-USERS-h1": "Utilisateurs",
-    "SNAKETABLE-search_placeholder": "Recherche...",
-    "SNAKETABLE-button_previous": "< Précédent",
-    "SNAKETABLE-of": "de",
-    "SNAKETABLE-button_next": "Suivant >",
-    "SNAKETABLE-click_to_copy": "Cliquer pour copier",
+    "USER-ACCOUNT-title": "Compte utilisateur",
+    "USER-ACCOUNT-h1": "Compte utilisateur ",
+    "USER-ACCOUNT-firstname_label": "Prénom",
+    "USER-ACCOUNT-lastname_label": "Nom",
+    "USER-ACCOUNT-email_label": "Courriel",
+    "USER-ACCOUNT-change_password": "Modification du mot de passe",
+    "USER-ACCOUNT-new_password_label": "Nouveau mot de passe",
+    "USER-ACCOUNT-new_password_placeholder": "Saisir le nouveau mot de passe",
+    "USER-ACCOUNT-confirm_password_label": "Confirmation du mot de passe",
+    "USER-ACCOUNT-confirm_password_placeholder": "Confirmer le nouveau mot de passe",
+    "USER-ACCOUNT-cannot_be_empty": "ne peut être vide",
 }
 
 languages = {

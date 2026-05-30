@@ -90,6 +90,11 @@ class User:
         if not fields:
             return
 
+        if "password" in fields:
+            fields["password_hash"] = generate_password_hash(
+                fields.pop("password")
+            )
+
         conn = get_db(current_app.config["DATABASE"])
 
         allowed_fields = {

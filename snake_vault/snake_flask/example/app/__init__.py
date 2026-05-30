@@ -72,6 +72,16 @@ def create_app(test_config=None):
 
     login_manager.init_app(app)
 
+    # [+] ---------------| quiz plugin.
+
+    app.config.setdefault(
+        "SNAKE_QUIZ_QUESTIONNAIRE_DIR",
+        None,
+    )
+
+    from .plugins.snake_flask_quiz import init_app as init_snake_quiz
+    init_snake_quiz(app)
+
     # [+] ------------------------------| routes / blueprint
     @app.route("/", methods=["GET", "POST"])
     @login_required
