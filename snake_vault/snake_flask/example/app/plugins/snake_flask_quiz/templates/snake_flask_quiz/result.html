@@ -6,7 +6,7 @@
 
 {% for question in results %}
 
-    <div class="fh-box fh-box-dark-subtle">
+    <div class="fh-box fh-box-dark">
 
             <h4>Question {{ loop.index }}</h4>
 
@@ -54,11 +54,11 @@
 
 {% endfor %}
 
-<div class="alert alert-info fs-4">
+<div class="fh-box fh-box-dark">
     Score: {{ score }} / {{ total }}
 </div>
 
-<a href="{{ url_for('snake_flask_quiz.index') }}" class="btn btn-secondary">
+<a href="{{ url_for('snake_flask_quiz.index') }}" class="btn btn-dark">
     Back
 </a>
 

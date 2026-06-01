@@ -21,6 +21,8 @@ Defines a URL route
 
 `@app.route("/")` tells Flask which function should run when the user visits `/`.
 
+Excellent.
+
 ---
 
 ## Question
