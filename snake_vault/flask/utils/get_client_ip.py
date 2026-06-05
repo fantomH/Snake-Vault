@@ -1,9 +1,12 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/utils/get_client_ip.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-06-04 20:28:00 UTC
-# updated       : 2026-06-05 14:20:00 UTC
-# description   : Get client IP from a Flask app.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ Snake-Vault / Flask Utils / get_client_ip                                 │
+# ├───────────────────────────────────────────────────────────────────────────┤
+# │ [Snake-Vault/snake_vault/flask/utils/get_client_ip.py]                    │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-06-04 20:28:00 UTC                                     │
+# │ Updated     : 2026-06-05 14:20:00 UTC                                     │
+# │ Description : Get client IP from a Flask app.                             │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from flask import request
 

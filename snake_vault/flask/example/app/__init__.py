@@ -1,3 +1,12 @@
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ Snake-Vault / flask / example app                                         │
+# ├───────────────────────────────────────────────────────────────────────────┤
+# │ [Snake-Vault/snake_vault/flask/example/app/__init__.py]                   │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-19 11:30:00 UTC                                     │
+# │ Updated     : 2026-06-05 15:07:56 UTC                                     │
+# │ Description : Flask example.                                              │
+# └───────────────────────────────────────────────────────────────────────────┘
 # [+] -------------------------------------------------------------------| INFO
 # [/Snake-Vault/snake_vault/flask/example/app/__init__.py]
 # author        : Pascal Malouin (https://github.com/fantomH)
@@ -35,6 +44,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     # [+] ---------------| config
+    # [+] ───────────────┤ config
 
     # Default configuration.
     app.config.from_mapping(
