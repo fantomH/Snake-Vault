@@ -23,7 +23,13 @@ dependencies = []
 # --- Per packages dependencies.
 [project.optional-dependencies]
 converter = ["lxml"]
-all = ["lxml"]
+quiz = ["Flask", "markdown"]
+
+all = [
+    "lxml",
+    "Flask",
+    "markdown"
+]
 
 [project.scripts]
 snake-converter = "snake_vault.snake_converter.cli:main"
@@ -37,3 +43,9 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[tool.setuptools.package-data]
+"snake_vault.snake_flask_quiz" = [
+    "templates/**/*.html",
+    "static/**/*",
+]

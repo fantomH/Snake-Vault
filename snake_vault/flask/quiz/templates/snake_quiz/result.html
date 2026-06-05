@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ questionnaire.title }}</h1>
+
+{% for question in results %}
+
+    <div class="fh-box fh-box-dark">
+
+            <h4>Question {{ loop.index }}</h4>
+
+            <div class="mb-3">
+                {{ question.question | markdown | safe }}
+            </div>
+
+            {% for choice in question.choices %}
+
+                {% set is_correct_choice = choice == question.answer %}
+                {% set is_wrong_selected = choice == question.user_answer and not question.is_correct %}
+
+                <div class="
+                    fh-box
+                    {% if is_correct_choice %}
+                        fh-box-success-subtle
+                    {% elif is_wrong_selected %}
+                        fh-box-danger-subtle
+                    {% else %}
+                        fh-box-light-subtle
+                    {% endif %}
+                ">
+                    {{ choice | markdown | safe }}
+
+                    {% if is_correct_choice %}
+                        <strong class="text-success">{{ display_language.get("SNAKEQUIZ-RESULTS-correct-answer", "Correct answer") }}</strong>
+                    {% endif %}
+
+                    {% if is_wrong_selected %}
+                        <strong class="text-danger">{{ display_language.get("SNAKEQUIZ-RESULTS-your-answer", "Your answer") }}</strong>
+                    {% endif %}
+                </div>
+
+            {% endfor %}
+
+            <div class="mt-3 p-3 bg-light border rounded">
+                <strong>{{ display_language.get("SNAKEQUIZ-RESULTS-explanation", "Explanation:") }}</strong>
+
+                <div>
+                    {{ question.explanation | markdown | safe }}
+                </div>
+            </div>
+
+    </div>
+
+{% endfor %}
+
+<div class="fh-box fh-box-dark">
+     {{ display_language.get("SNAKEQUIZ-RESULTS-score", "Score:") }} {{ score }} / {{ total }}
+</div>
+
+<a href="{{ url_for('quiz_bp.index') }}" class="btn btn-dark">
+    {{ display_language.get("SNAKEQUIZ-BUTTON-back", "Back") }}
+</a>
+
+{% endblock %}

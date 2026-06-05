@@ -1,0 +1,41 @@
+I want to create a plugin called linguae.
+
+The class SnakeLinguae.init_app() would:
+
+- Determine the language (get_display_language()) or the current_app and make it part of g?
+
+here I am thinking of 1) check if the user.language is set, 2) elif app.config['DEFAULT_LANGUAGE'], 3) return "english".
+
+- The main app and extension, can get the display lang.
+
+- In the app or the extension, I want to be able to have one file per language. for example, french.py, english.py.
+
+Therefore, main_app would be:
+
+app.py
+linguae/french.py
+linguae/english.py
+
+Same for the snake_quiz extension:
+
+__init__.py
+linguae/french.py
+linguae/english.py
+
+- the function get_language_dictionnary() would somehow get all the dictionnaries.
+
+dictionnary files can be added often.
+
+I am thinking we should do from .linguae import *
+
+also, in order not to confuse the dictionnaries, the name of the dict should have a prefix.
+
+for example,
+
+/snake_vault/flask/quiz/linguae/french.py:
+
+SNAKEQUIZ_english = {
+    "SNAKEQUIZ-hello": "Hello"
+}
+
+so, get_language_dictionnary(self, language, prefix)

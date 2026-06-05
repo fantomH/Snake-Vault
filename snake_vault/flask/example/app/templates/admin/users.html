@@ -1,0 +1,11 @@
+{# templates/admin/users.html #}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ display_language["ADMIN-USERS-h1"] }}</h1>
+
+{{ users_table.load() | safe }}
+
+{% endblock %}

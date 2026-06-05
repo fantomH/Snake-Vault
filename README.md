@@ -3,7 +3,7 @@
 # [Snake-Vault/README.md]
 # author        : Pascal Malouin (https://github.com/fantomH)
 # created       : 2025-09-21 15:08:02 UTC
-# updated       : 2026-04-14 10:46:52 UTC
+# updated       : 2026-06-02 16:58:07 UTC
 # description   : Snake-Vault README
 
 }}} -->
@@ -13,6 +13,8 @@
 # Snake-Vault
 
 Miscellanous Python utilities.
+
+To install all dependencies, use `pip install 'Snake-Vault[all]`.
 
 ## snake_vault.files
 
