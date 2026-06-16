@@ -1,9 +1,12 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/db.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-05-19 11:56:16 UTC
-# updated       : 2026-06-04 18:10:42 UTC
-# description   : Database.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ Snake-Vault / flask / exemple / db                                        │
+# ├───────────────────────────────────────────────────────────────────────────┤
+# │ [Snake-Vault/snake_vault/flask/example/app/db.py]                         │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-19 11:56:16 UTC                                     │
+# │ Updated     : 2026-06-11 17:51:56 UTC                                     │
+# │ Description : Database.                                                   │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 import shutil
 import sqlite3
@@ -43,7 +46,7 @@ def init_db():
     Run in terminal `flask --app run init-db` to initialize the db.
     """
 
-    from .model_user import User
+    from .models.user import User
 
     User.create_table()
     User.create_user(
@@ -61,9 +64,11 @@ def init_db():
         "Default login: admin / password"
     )
 
-# [+] ---------------| migration
+# ┌─────────────────────────────────────────────────────────────── migration ─┐
+# └───────────────────────────────────────────────────────────────────────────┘
 
-# [+] Create migration table
+# ┌─ [+] miration table: create ──────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 def create_migration_table(database):
 
     conn = get_db(database)
@@ -75,7 +80,8 @@ def create_migration_table(database):
         )
     """)
 
-# [+] Migrate
+# ┌─ [+] migrate ─────────────────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @click.command("migrate")
 @click.option("--database", required=True)
 @click.argument("migration_file")

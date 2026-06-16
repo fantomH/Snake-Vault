@@ -1,9 +1,12 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/validator.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-05-21 19:40:24 UTC
-# updated       : 2026-06-04 18:20:17 UTC
-# description   : Data validator.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ Snake-Vault / flask / exemple / validator                                 │
+# ├───────────────────────────────────────────────────────────────────────────┤
+# │ [Snake-Vault/snake_vault/flask/example/app/validator.py]                  │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-21 19:40:24 UTC                                     │
+# │ Updated     : 2026-06-11 18:42:34 UTC                                     │
+# │ Description : Data validator                                              │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 import re
 

@@ -1,9 +1,11 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/linguae/english.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-06-03 17:55:04 UTC
-# updated       : 2026-06-04 16:03:13 UTC
-# description   : Example English dictionary.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ [Snake-Vault/snake_vault/flask/example/app/linguae/english.py]            │
+# │                                                                           │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-06-11 21:18:19 UTC                                     │
+# │ Updated     : 2026-06-11 21:18:19 UTC                                     │
+# │ Description : English dictionary.                                         │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from markupsafe import Markup
 
@@ -68,6 +70,7 @@ EXAMPLE = {
     "SIGNUP-password2_placeholder": "Confirm your password",
     "SIGNUP-submit_button": "Submit",
     "SIGNUP-passwords_dont_match": "Passwords don't match!",
+    "SIGNUP-Account-created.": "Account created.",
     "ADMIN-USERS-h1": "Users",
     "USER-ACCOUNT-title": "User Account",
     "USER-ACCOUNT-h1": "User Account ",

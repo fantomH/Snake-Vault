@@ -1,9 +1,11 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/linguae/french.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-06-03 17:55:04 UTC
-# updated       : 2026-06-04 16:04:40 UTC
-# description   : Example French dictionary.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ [Snake-Vault/snake_vault/flask/example/app/linguae/french.py]             │
+# │                                                                           │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-06-11 21:26:26 UTC                                     │
+# │ Updated     : 2026-06-11 21:26:26 UTC                                     │
+# │ Description : French dictionary.                                          │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from markupsafe import Markup
 

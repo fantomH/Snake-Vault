@@ -2,7 +2,6 @@
 
 {% block content %}
 
-<h1>{{ display_language["HOME-h1"] }}</h1>
-
+<h1>{{ display_language.get("HOME-h1", "Home") }}</h1>
 
 {% endblock %}

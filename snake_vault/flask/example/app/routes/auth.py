@@ -1,9 +1,11 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/routes/auth.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-05-19 16:01:48 UTC
-# updated       : 2026-06-04 18:24:46 UTC
-# description   : Authentication routes.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ [Snake-Vault/snake_vault/flask/example/app/routes/auth.py]                │
+# │                                                                           │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-19 16:01:48 UTC                                     │
+# │ Updated     : 2026-06-12 11:00:11 UTC                                     │
+# │ Description : Authentication routes.                                      │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from flask import Blueprint
 from flask import current_app
@@ -17,13 +19,14 @@ from flask import url_for
 from werkzeug.security import check_password_hash
 
 from ..login_manager import login_required
-from ..model_user import User
+from ..models.user import User
 from ..utils import get_language_dictionary
 from ..validator import is_valid_password
 
 auth = Blueprint("auth", __name__)
 
-# [+] ---------------| /login/
+# ┌─ [+] /login/ ─────────────────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @auth.route('/login/', methods=['GET', 'POST'])
 def login():
 
@@ -54,24 +57,42 @@ def login():
 
                     return redirect(next_page)
                 else:
-                    flash(display_language["LOGIN-wrong_password"], "danger")
+                    flash(
+                        display_language.get(
+                            "LOGIN-wrong_password",
+                            "Username or password is incorrect."
+                        ),
+                        "danger"
+                    )
             else:
-                flash(display_language["LOGIN-account_not_active"], "danger")
+                flash(
+                    display_language.get(
+                        "LOGIN-account_not_active", 
+                        "Your account must be activated. Contact your administrator"
+                    ),
+                    "danger"
+                )
         else:
-            flash(display_language["LOGIN-please_sign_up"], "danger")
-        
+            flash(
+                display_language.get(
+                    "LOGIN-please_sign_up",
+                    "This account does not exist"
+                ),
+                "danger"
+            )
 
     return render_template(
         'auth/login.html',
-        title=display_language["LOGIN-title"],
+        title=display_language.get("LOGIN-title", "Log in"),
         display_language=display_language
     )
 
-# [+] ---------------| /sign-up/
+# ┌─ [+] /sign-up/ ───────────────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @auth.route("/sign-up/", methods=["GET", "POST"])
 def sign_up():
 
-    display_language = get_display_language()
+    display_language = get_language_dictionary()
 
     form_data = {
         "firstname": "",
@@ -92,31 +113,88 @@ def sign_up():
         validated = True
 
         if len(form_data["firstname"]) < 1:
-            flash(display_language["SIGNUP-firstname"] + " " + display_language["SIGNUP-cannot_be_empty"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-firstname",
+                     "First name"
+                )
+                + " " + 
+                display_language.get(
+                    "SIGNUP-cannot_be_empty", 
+                    "cannot be empty."
+                ),
+                "danger"
+            )
             validated = False
 
         if len(form_data["lastname"]) < 1:
-            flash(display_language["SIGNUP-lastname"] + " " + display_language["SIGNUP-cannot_be_empty"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-lastname",
+                    "Last name"
+                )
+                + " " + 
+                display_language.get(
+                    "SIGNUP-cannot_be_empty", 
+                    "cannot be empty."
+                ),
+                "danger"
+            )
             validated = False
 
         if len(form_data["username"]) < 1:
-            flash(display_language["SIGNUP-user"] + " " + display_language["SIGNUP-cannot_be_empty"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-user",
+                    "Username"
+                )
+                + " " +
+                display_language.get(
+                    "SIGNUP-cannot_be_empty",
+                    "cannot be empty"
+                ),
+                "danger"
+            )
             validated = False
 
         if User.fetch_by_username(form_data["username"]):
-            flash(display_language["SIGNUP-user_already_exists"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-user_already_exists",
+                    "User already exists."
+                ), 
+                "danger"
+            )
             validated = False
 
         if User.fetch_by_email(form_data["email"]):
-            flash(display_language["SIGNUP-email_already_exists"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-email_already_exists", 
+                    "Email already exists"
+                ), 
+                "danger"
+            )
             validated = False
 
         if not is_valid_password(password1):
-            flash(display_language["SIGNUP-invalid_password"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-invalid_password", 
+                    "Invalid password"
+                ), 
+                "danger"
+            )
             validated = False
             
         if password1 != password2:
-            flash(display_language["SIGNUP-passwords_dont_match"], "danger")
+            flash(
+                display_language.get(
+                    "SIGNUP-passwords_dont_match", 
+                    "Password do not match"
+                ), 
+                "danger"
+            )
             validated = False
 
         if not validated:
@@ -126,7 +204,8 @@ def sign_up():
                 form_data=form_data,
             )
 
-        # [+] Create user
+        # ┌─ [+] create user ─────────────────────────────────────────────────┐
+        # └───────────────────────────────────────────────────────────────────┘
         User.create_user(
             username=form_data["username"],
             firstname=form_data["firstname"],
@@ -134,7 +213,15 @@ def sign_up():
             email=form_data["email"],
             password=password1,
         )
-        flash("Account created.", "success")
+
+        flash(
+            display_language.get(
+                "SIGNUP-Account-created.", 
+                "Account created."
+            ),
+            "success"
+        )
+
         return redirect(url_for("auth.login"))
 
     return render_template(
@@ -143,18 +230,20 @@ def sign_up():
         form_data=form_data,
     )
 
-# [+] ---------------| /my-account/
+# ┌─ [+] /my-account/ ────────────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @auth.route("/my-account/", methods=["GET", "POST"])
 def my_account():
 
-    display_language = get_display_language()
+    display_language = get_language_dictionary()
 
     return render_template(
         'auth/my-account.html',
         display_language=display_language,
     )
 
-# [+] ---------------| /logout/
+# ┌─ [+] /logout/ ────────────────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @auth.route("/logout/", methods=['GET', 'POST'])
 @login_required
 def logout():

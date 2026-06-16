@@ -1,9 +1,11 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/tables/admin.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-05-24 16:34:45 UTC
-# updated       : 2026-05-24 16:34:45 UTC
-# description   : Tables definition.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ [Snake-Vault/snake_vault/flask/example/app/tables/admin.py]               │
+# │                                                                           │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-24 16:34:45 UTC                                     │
+# │ Updated     : 2026-06-12 14:04:22 UTC                                     │
+# │ Description : Table definition.                                           │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from flask import current_app
 
@@ -12,8 +14,10 @@ from snake_vault.flask.snake_tables.utils import get_language_dictionary
 
 from ..db import get_db
 
-# [+] ---------------| column lang definition
-
+# ┌─ [+] custom dictionary ───────────────────────────────────────────────────┐
+# │                                                                           │
+# │ Custom dictionary for Users table columns.                                │
+# └───────────────────────────────────────────────────────────────────────────┘
 columns_lang_display = {
     "english": {
         "column-edit-text": "Modify",
@@ -31,7 +35,10 @@ def get_users_table():
 
     display_language = get_language_dictionary(custom=columns_lang_display)
 
-    # [+] ---------------| column definition
+    # ┌─ [+] columns definition ──────────────────────────────────────────────┐
+    # │                                                                       │
+    # │ Using Snake-Tables.                                                   │
+    # └───────────────────────────────────────────────────────────────────────┘
     ADMIN_USERS_TABLE = [
         {
             "name": "username",
@@ -66,7 +73,7 @@ def get_users_table():
         data_url="/admin/users/data/",
         data_update_url="/admin/users/update/",
         db = get_db(current_app.config["DATABASE"]),
-        columns=ADMIN_USERS_TABLE,
         source_table="users",
+        columns=ADMIN_USERS_TABLE,
         default_order_by="username ASC",
     )

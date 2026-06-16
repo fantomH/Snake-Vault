@@ -1,9 +1,11 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/routes/admin.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-05-19 16:01:48 UTC
-# updated       : 2026-06-04 18:21:20 UTC
-# description   : Admin routes.
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ [Snake-Vault/snake_vault/flask/example/app/routes/admin.py]               │
+# │                                                                           │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-19 16:01:48 UTC                                     │
+# │ Updated     : 2026-06-11 21:28:40 UTC                                     │
+# │ Description : Admin routes.                                               │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from flask import Blueprint
 from flask import current_app
@@ -14,13 +16,14 @@ from flask import request
 from snake_vault.flask.snake_tables.table import Table
 
 from ..login_manager import ( login_required )
-from ..model_user import ( User )
+from ..models.user import User
 from ..tables.admin import get_users_table
 from ..utils import get_language_dictionary
 
 admin = Blueprint("admin", __name__)
 
-# [+] ---------------| /admin/users
+# ┌─ [+] /admin/users ────────────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @admin.route("/admin/users/", methods=["GET", "POST"])
 @login_required
 def users():
@@ -28,17 +31,14 @@ def users():
     display_language = get_language_dictionary()
     users_table = get_users_table()
 
-    if request.method == "POST":
-        print("/admin/users/ : " , request)
-
     return render_template(
         "admin/users.html",
         users_table=users_table,
         display_language=display_language,
     )
 
-
-# [+] ---------------| /admin/users/data/
+# ┌─ [+] /admin/users/data/ ──────────────────────────────────────────────────┐
+# └───────────────────────────────────────────────────────────────────────────┘
 @admin.route("/admin/users/data/")
 @login_required
 def users_data():
@@ -49,12 +49,17 @@ def users_data():
         users_table.get_data()
     )
 
-# [+] ---------------| /admin/users/update/
+# ┌─ [+] /admin/users/update ─────────────────────────────────────────────────┐
+# │                                                                           │
+# │ Takes data changes in /admin/users and update the db.                     │
+# └───────────────────────────────────────────────────────────────────────────┘
 @admin.route("/admin/users/update/", methods=["POST"])
 @login_required
 def users_update():
 
     data = request.get_json()
+
+    print(data)
 
     User.update_user(
         data.get("id"),
@@ -67,7 +72,10 @@ def users_update():
         "ok": True,
     })
 
-# [+] ---------------| /admin/users/<username>/
+# ┌─ [+] /admin/users/<username> ─────────────────────────────────────────────┐
+# │                                                                           │
+# │ TODO : Complete validation and update db.                                 │
+# └───────────────────────────────────────────────────────────────────────────┘
 @admin.route("/admin/users/account/<username>/", methods=["GET", "POST"])
 def user_account(username):
 

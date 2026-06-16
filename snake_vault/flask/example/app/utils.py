@@ -1,13 +1,12 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/utils.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-06-03 20:10:31 UTC
-# updated       : 2026-06-04 17:04:13 UTC
-# description   : Example utils.
-
-from snake_vault.snake_utils.logger import SnakeLogger
-
-log = SnakeLogger(profile="development")
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ Snake-Vault / flask / example / utils                                     │
+# ├───────────────────────────────────────────────────────────────────────────┤
+# │ [Snake-Vault/snake_vault/flask/example/app/utils.py]                      │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-06-03 20:10:31 UTC                                     │
+# │ Updated     : 2026-06-11 18:30:38 UTC                                     │
+# │ Description : Utils.                                                      │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 def get_language_dictionary(custom: dict[str, dict] | None = None) -> dict:
     try:

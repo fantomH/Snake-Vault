@@ -1,9 +1,12 @@
-# [+] -------------------------------------------------------------------| INFO
-# [/Snake-Vault/snake_vault/flask/example/app/login_manager.py]
-# author        : Pascal Malouin (https://github.com/fantomH)
-# created       : 2026-05-20 19:48:23 UTC
-# updated       : 2026-06-04 18:13:21 UTC
-# description   : Login_manager
+# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
+# │ Snake-Vault / flask / login manager                                       │
+# ├───────────────────────────────────────────────────────────────────────────┤
+# │ [Snake-Vault/snake_vault/flask/example/app/login_manager.py]              │
+# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
+# │ Created     : 2026-05-20 19:48:23 UTC                                     │
+# │ Updated     : 2026-06-11 17:58:13 UTC                                     │
+# │ Description : Login Manager                                               │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 from functools import wraps
 
@@ -13,7 +16,7 @@ from flask import request
 from flask import session
 from flask import url_for
 
-from .model_user import User
+from .models.user import User
 
 def load_logged_in_user():
     user_id = session.get("user_id")

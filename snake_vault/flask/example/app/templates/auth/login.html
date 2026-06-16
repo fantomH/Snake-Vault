@@ -3,31 +3,31 @@
 {% block content %}
 
 <div class="container">
-    <form method="POST">
+  <form method="POST">
 
-        <h1>{{ display_language["LOGIN-h1"] }}</h1>
-        <div class="form-group">
-            <label for="email">{{ display_language["LOGIN-user"] }}</label>
-            <input
-                type="text"
-                id="username"
-                name="username"
-                class="form-control"
-                placeholder="{{ display_language["LOGIN-user_placeholder"] }}"/>
-            <label for="password">{{ display_language["LOGIN-password"] }}</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                class="form-control"
-                placeholder="{{ display_language["LOGIN-password_placeholder"] }}"/>
-            <br />
-            <div align="right">
-                <button class="btn btn-dark" type="submit">{{ display_language["LOGIN-login"] }}</button>
-            </div>
+    <h1>{{ display_language.get("LOGIN-h1", "Log in") }}</h1>
+    <div class="form-group">
+        <label for="email">{{ display_language.get("LOGIN-user", "User") }}</label>
+        <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="{{ display_language.get("LOGIN-user_placeholder", "Enter your username") }}"/>
+        <label for="password">{{ display_language.get("LOGIN-password", "Password") }}</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="{{ display_language.get("LOGIN-password_placeholder", "Enter your password") }}"/>
+        <br />
+        <div align="right">
+            <button class="btn btn-dark" type="submit">{{ display_language.get("LOGIN-login", "Log In") }}</button>
         </div>
+    </div>
 
-    </form>
+  </form>
 </div>
 
 {% endblock %}
