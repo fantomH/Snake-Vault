@@ -1,12 +1,12 @@
 <!--
-┌────────────────────────────────────────────────────────────────────── INFO ─┐
-│ [Snake-Vault/snake_vault/flask/example/app/templates/auth/sign-up.html]     │
-│                                                                             │
-│ Author      : Pascal Malouin (https://github.com/fantomH)                   │
-│ Created     : 2026-06-12 18:25:30 UTC                                       │
-│ Updated     : 2026-06-12 18:25:30 UTC                                       │
-│ Description : Sign up.                                                      │
-└─────────────────────────────────────────────────────────────────────────────┘
++---------------------------------------------------------------------- INFO -+
+| [Snake-Vault/snake_vault/flask/example/app/templates/auth/sign-up.html]     |
+|                                                                             |
+| Author      : Pascal Malouin (https://github.com/fantomH)                   |
+| Created     : 2026-06-16 13:34:11 UTC                                       |
+| Updated     : 2026-06-16 13:34:11 UTC                                       |
+| Description : Sign up.                                                      |
++-----------------------------------------------------------------------------+
 -->
 
 {% extends "base.html" %}
@@ -120,13 +120,13 @@
 
 {% block scripts_footer %}
 <!--
-┌─ [!] TODO ──────────────────────────────────────────────────────────────────┐
-│                                                                             │
-│ Move this to a general JS                                                   │
-└─────────────────────────────────────────────────────────────────────────────┘
++- [!] TODO ------------------------------------------------------------------+
+|                                                                             |
+| Move this to a general JS.                                                  |
++-----------------------------------------------------------------------------+
 -->
-    <script>
-      setupPasswordToggle("togglePassword1", "password1");
-      setupPasswordToggle("togglePassword2", "password2");
-    </script>
+  <script>
+    setupPasswordToggle("togglePassword1", "password1");
+    setupPasswordToggle("togglePassword2", "password2");
+  </script>
 {% endblock %}

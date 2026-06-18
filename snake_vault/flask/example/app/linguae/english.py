@@ -1,11 +1,11 @@
-# ┌──────────────────────────────────────────────────────────────────── INFO ─┐
-# │ [Snake-Vault/snake_vault/flask/example/app/linguae/english.py]            │
-# │                                                                           │
-# │ Author      : Pascal Malouin (https://github.com/fantomH)                 │
-# │ Created     : 2026-06-11 21:18:19 UTC                                     │
-# │ Updated     : 2026-06-11 21:18:19 UTC                                     │
-# │ Description : English dictionary.                                         │
-# └───────────────────────────────────────────────────────────────────────────┘
+# +-------------------------------------------------------------------- INFO -+
+# | [Snake-Vault/snake_vault/flask/example/app/linguae/english.py]            |
+# |                                                                           |
+# | Author      : Pascal Malouin (https://github.com/fantomH)                 |
+# | Created     : 2026-06-11 21:18:19 UTC                                     |
+# | Updated     : 2026-06-17 11:59:40 UTC                                     |
+# | Description : English dictionary.                                         |
+# +---------------------------------------------------------------------------+
 
 from markupsafe import Markup
 
@@ -83,4 +83,9 @@ EXAMPLE = {
     "USER-ACCOUNT-confirm_password_label": "Confirmation of new password",
     "USER-ACCOUNT-confirm_password_placeholder": "Confirm new password",
     "USER-ACCOUNT-cannot_be_empty": "cannot be empty",
+    "USER-ACCOUNT-username-already-exists": "Username already exists.",
+    "USER-ACCOUNT-email-already-exists": "Email already exists.",
+    "USER-ACCOUNT-username": "Username",
+    "USER-ACCOUNT-invalid-password": "Invalid password",
+    "USER-ACCOUNT-passwords-dont-match": "Passwords don't match",
 }
