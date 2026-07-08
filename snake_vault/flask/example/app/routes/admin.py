@@ -3,7 +3,7 @@
 # |                                                                           |
 # | Author      : Pascal Malouin (https://github.com/fantomH)                 |
 # | Created     : 2026-05-19 16:01:48 UTC                                     |
-# | Updated     : 2026-06-16 16:23:27 UTC                                     |
+# | Updated     : 2026-06-19 19:34:47 UTC                                     |
 # | Description : Admin routes.                                               |
 # +---------------------------------------------------------------------------+
 
@@ -14,19 +14,18 @@ from flask import jsonify
 from flask import render_template
 from flask import request
 
-from snake_vault.flask.snake_tables.table import Table
-from snake_vault.snake_utils.data_validator import is_valid_password
+from snake_flask.linguae import get_language_dictionary
+from snake_vault.utils.data_validator import is_valid_password
 
 from ..login_manager import ( login_required )
 from ..models.user import User
 from ..tables.admin import get_users_table
-from ..utils import get_language_dictionary
 
 admin = Blueprint("admin", __name__)
 
 # ┌─ [+] /admin/users ────────────────────────────────────────────────────────┐
 # └───────────────────────────────────────────────────────────────────────────┘
-@admin.route("/admin/users/", methods=["GET", "POST"])
+@admin.route("/admin/users/")
 @login_required
 def users():
 
@@ -60,8 +59,6 @@ def users_data():
 def users_update():
 
     data = request.get_json()
-
-    print("This is from update:", data)
 
     User.update_user(
         data.get("id"),

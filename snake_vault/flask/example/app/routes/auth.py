@@ -18,11 +18,11 @@ from flask import session
 from flask import url_for
 from werkzeug.security import check_password_hash
 
-from snake_vault.snake_utils.data_validator import is_valid_password
+from snake_flask.linguae import get_language_dictionary
+from snake_vault.utils.data_validator import is_valid_password
 
 from ..login_manager import login_required
 from ..models.user import User
-from ..utils import get_language_dictionary
 
 auth = Blueprint("auth", __name__)
 

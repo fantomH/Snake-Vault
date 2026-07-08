@@ -9,8 +9,8 @@
 
 from flask import current_app
 
-from snake_vault.flask.snake_tables.table import Table
-from snake_vault.flask.snake_tables.utils import get_language_dictionary
+from snake_flask.linguae import get_language_dictionary
+from snake_flask.tables import Table
 
 from ..db import get_db
 
